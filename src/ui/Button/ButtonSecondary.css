@@ -1,0 +1,14 @@
+.btn-secondary {
+    background-color: var(--color-blue-light);
+    color: var(--color-blue-dark);
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: .4rem 1.4rem;
+    border-radius: 50px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-blue-dark);
+    color: var(--color-white);
+}

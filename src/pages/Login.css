@@ -1,0 +1,29 @@
+.login-header {
+    background-color: var(--bg-color-blue);
+}
+
+.form-main-wrapper {
+    background: var(--bg-color-blue) url('/bg-login-shape.png');
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.form-wrapper .header h2 {
+    color: #212121;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    border-bottom: 1px solid #CED4DA;
+    padding-bottom: 1rem;
+}
+
+
+.form-wrapper .header h3 {
+    color: var(--color-purple-dark);
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 1.2rem 0;
+}

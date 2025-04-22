@@ -1,0 +1,26 @@
+.logo-wrapper .name {
+    color: #121926;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.logo-wrapper .name span {
+    color: var(--color-purple-dark);
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.22px;
+}
+
+.logo-wrapper .toggler {
+    background-color: var(--color-purple-light);
+    padding: 0.6rem;
+    border-radius: .5rem;
+}
+
+.logo-wrapper .toggler {
+    color: var(--color-purple-dark);
+}

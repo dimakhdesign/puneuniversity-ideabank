@@ -1,0 +1,11 @@
+.btn-primary {
+    border-radius: 5px;
+    background: var(--color-purple-dark);
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 100%;
+    padding: 1rem;
+}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+
+
+:root {
+    --color-blue-dark: #1E88E5;
+    --color-blue-light: #E3F2FD;
+    --color-blue-lighter: #EEF2F6;
+    --color-purple-dark: #673AB7;
+    --color-purple-light: #EDE7F6;
+    --color-yellow-dark: #FFDC71;
+    --color-yellow-light: #FFF8E1;
+    --color-orange-dark: #D84315;
+    --color-orange-light: #FBE9E7;
+    --color-green-dark: #00C853;
+    --color-green-light: #B9F6CA;
+    --color-grey: #E3E8EF;
+
+    --color-white: #ffffff;
+    --color-black-darker: #000000;
+    --color-black-dark: #121926;
+    --color-black-light: #697586;
+    --color-para: #4B5565;
+    --bg-color-blue: #D4E7F9;
+}
+
+*,
+*::before,
+*::after {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: var(--color-black-dark);
+}
+
+.section-heading {
+    color: var(--color-black-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: .4rem;
+}
+
+/* p {
+    color: var(--color-para);
+} */

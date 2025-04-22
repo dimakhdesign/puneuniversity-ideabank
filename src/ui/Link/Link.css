@@ -1,0 +1,7 @@
+.link {
+    color: var(--color-blue-dark);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: capitalize;
+}

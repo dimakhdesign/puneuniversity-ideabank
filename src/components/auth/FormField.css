@@ -1,0 +1,13 @@
+::placeholder {
+    color: #4F4F4F;
+    opacity: 1;
+}
+
+::-ms-input-placeholder {
+    color: #4F4F4F;
+}
+
+input[type="text"],
+input[type="date"] {
+    color: #4F4F4F;
+}

@@ -1,0 +1,16 @@
+.InfoWithIcon .icon {
+    background-color: var(--color-yellow-light);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.InfoWithIcon .text h4 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.InfoWithIcon .text p {
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--color-black-light);
+}
