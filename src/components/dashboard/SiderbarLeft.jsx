@@ -4,6 +4,22 @@ import { NavLink } from 'react-router-dom';
 import { HiOutlineBars3 } from "react-icons/hi2";
 import './SiderbarLeft.css';
 
+import IconDashboard from '../../assets/icon-dashboard.svg'
+import IconSubmit from '../../assets/icon-submit.svg'
+import IconForum from '../../assets/icon-forum.svg'
+import IconDocument from '../../assets/icon-document.svg'
+import IconNotification from '../../assets/icon-bell.svg'
+import IconSettings from '../../assets/icon-settings.svg'
+
+// const menuItems = [
+//     { name: 'Dashboard', icon: '📊', link: "/dashboard-student" },
+//     { name: 'Submit Research', icon: '👤', link: "research-submit" },
+//     { name: 'Documents & Resources', icon: '⚙️' , link: "discussion-forum" },
+//     { name: 'Notifications', icon: '🚪' , link: "resources" },
+//     { name: 'Settings & Profile', icon: '🚪' , link: "notifications" },
+//   ];
+
+
 const handleToggleClick = () => {
 
     setShowSidebar(show => !show);
@@ -14,6 +30,7 @@ const handleToggleClick = () => {
 
 const SiderbarLeft = ({ menuItems }) => {
     const [isOpen, setIsOpen] = useState(true);
+    const [showSidebar, setShowSidebar] = useState(false);
 
     const handleToggleClick = () => {
         setIsOpen(!isOpen)

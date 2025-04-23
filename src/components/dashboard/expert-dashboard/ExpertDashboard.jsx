@@ -5,19 +5,12 @@ import "../SiderbarLeft.css";
 
 import { Outlet } from 'react-router-dom';
 
-import IconDashboard from '../../../assets/icon-dashboard.svg'
 import IconSubmit from '../../../assets/icon-submit.svg'
-import IconForum from '../../../assets/icon-forum.svg'
-import IconDocument from '../../../assets/icon-document.svg'
-import IconNotification from '../../../assets/icon-bell.svg'
-import IconSettings from '../../../assets/icon-settings.svg'
 
 
 
 const menuItems = [
-  { name: "Dashboard", icon: IconDashboard, link: "/dashboard-student" },
-  { name: "Submit Research", icon: IconSubmit, link: "/research-submit" },
-  { name: "Q&A Forum", icon: IconForum, link: "/discussion-forum" },
+  { name: "Student List", icon: IconSubmit, link: "/research-submit" },
 ];
 
 function ExpertDashboard() {
