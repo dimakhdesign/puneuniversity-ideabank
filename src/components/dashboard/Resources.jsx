@@ -2,9 +2,7 @@ import React from 'react'
 
 const Resources = () => {
     return (
-        <div>
-            Documents & Resources
-        </div>
+        <p>There are no resources found.</p>
     )
 }
 

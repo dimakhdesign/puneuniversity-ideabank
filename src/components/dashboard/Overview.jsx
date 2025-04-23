@@ -1,15 +1,24 @@
+import { API_KEY } from '../../config/apiConfig';
+import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { UserContext } from '../../context/UserContext';
+
 import WhiteBox from "../../ui/WhiteBox";
 import UserImage from '../../assets/user-profile-image.svg';
 import ButtonSecondary from "../../ui/Button/ButtonSecondary";
 import AccordionGroup from "../../ui/Accordion/AccordionGroup";
 import Link from "../../ui/Link/Link";
-import ProgressBar from '../../ui/ProgressBar/ProgressBar';
-import SidebarRight from "./SidebarRight";
 
-import IconProgress from '../../assets/icon-progress.svg';
-import IconDocumentUpload from '../../assets/icon-document-upload.svg';
+import SidebarRight from "./SidebarRight";
+import PurpleCard from '../../ui/Cards/PurpleCard';
+import BlueCard from '../../ui/Cards/BlueCard';
+
+import Modal from '../../ui/Modal/Modal';
+import Button from '../../ui/Button/Button';
+import FormField from '../auth/FormField';
 
 import './Overview.css';
+import { useNavigate } from 'react-router-dom';
 
 const faqItems = [
     {
@@ -28,8 +37,89 @@ const faqItems = [
 
 const Overview = () => {
 
+    const [showModal, setShowModal] = useState(false);
+
+    const [studentData, setStudentData] = useState(null);
+
+    const { currentUser } = useContext(UserContext); // Access user data from context
+
+    const studentId = currentUser.id;
+
+    console.log(currentUser)
+
+    const navigate = useNavigate();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = async (formData) => {
+        console.log(formData);
+    }
+
+    useEffect(() => {
+        if (!studentId) return;
+
+        const getStudentData = async () => {
+            try {
+                const response = await fetch('/api/profileStudent.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Authorization_key: API_KEY,
+                        student_id: studentId,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+
+                // Check if the response contains the 'field_array'
+                if (result.Response && result.field_array) {
+                    // Destructure data from the 'field_array'
+                    const {
+                        id,
+                        name,
+                        email,
+                        college_name,
+                        dob,
+                        student_type
+                    } = result.field_array;
+
+                    // Update the state with student data
+                    setStudentData({
+                        id,
+                        name,
+                        email,
+                        college_name,
+                        dob,
+                        student_type,
+                    });
+                } else {
+                    setError(result.msg || 'Failed to fetch student data');
+                }
+            } catch (error) {
+                console.error('Get User error:', error);
+                setError(error.message);
+            }
+        };
+
+        getStudentData();
+    }, []);
+
+    const handleUpdateProfile = () => {
+        navigate('/dashboard-student/settings')
+    }
+
     const handleViewAllClick = () => {
-        console.log("Clicked");
+        navigate('/dashboard-student/resources')
     }
 
     const handleUploadDoc = () => {
@@ -45,71 +135,74 @@ const Overview = () => {
                         <img src={UserImage} alt="User" />
                     </div>
                     <div className="profile-summary">
-                        <p> Welcome to our platform,<br /> <strong>Rajesh Shinde !</strong> Here’s a quick overview of what you can expect.</p>
+                        {studentData && (
+                            <p>
+                                Welcome to our platform,<br />
+                                <strong>{`${studentData.name} !`}</strong> Here’s a quick overview of what you can expect.
+                            </p>
+                        )}
                         <div className='profile-cpmpletion-status flex gap-3 items-center mt-3'>
                             <p>Your profile is 50% completed.</p>
-                            <ButtonSecondary text="Update Now!" />
+                            <ButtonSecondary text="Update Now!" onClick={handleUpdateProfile} />
                         </div>
                     </div>
                 </WhiteBox>
 
                 <div className="cards-wrapper flex gap-4 mt-5">
                     {/* Purple Card */}
-                    <div className="card purple-card flex flex-col justify-center p-5 gap-5 text-white">
-                        <div className="header flex gap-3">
-                            <div className="icon flex justify-center align-center">
-                                <img src={IconProgress} alt="" />
-                            </div>
-                            <div className="text">
-                                <h5>Research Submission Progress</h5>
-                                <p>Current Status : Approved</p>
-                            </div>
-                        </div>
-                        <div className="body flex flex-col">
-                            <label className="flex justify-between">
-                                <span>Progress</span>
-                                <span>80%</span>
-                            </label>
-                            <ProgressBar value={80} />
-                        </div>
-                    </div>
+                    <PurpleCard />
 
                     {/* Blue Card */}
-                    <div className="card blue-card flex flex-col justify-center p-5 gap-5 text-white">
-                        <div className="header flex gap-3">
-                            <div className="icon flex justify-center align-center">
-                                <img src={IconDocumentUpload} alt="" />
-                            </div>
-                            <div className="text">
-                                <h5>Upload Final Document</h5>
-                                <p>Current Status : Approved</p>
-                            </div>
-                        </div>
-                        <div className="body">
-                            <div className="btn-upload rounded-full text-center cursor-pointer" onClick={handleUploadDoc}>Upload</div>
-                            {/* <input type="file" className="btn-upload rounded-full text-center cursor-pointer" /> */}
-                        </div>
-                    </div>
+                    <BlueCard />
                 </div>
 
                 <WhiteBox className='bg-white question-answer-box mt-5'>
                     <div className="accordion-header flex justify-between">
                         <h2 className="section-heading">Q&A Discussions</h2>
-                        <ButtonSecondary text="Ask new Question" />
+                        <ButtonSecondary text="Ask new Question" onClick={() => setShowModal(true)} />
                     </div>
                     <div className="accordion-wrapper border-t-1 border-gray-200 mt-4">
-                        <AccordionGroup items={faqItems} />
-                        <Link text="View All" className="mt-3" onClick={handleViewAllClick} />
+                        {/* <AccordionGroup items={faqItems} />
+                        <Link text="View All" className="mt-3" onClick={handleViewAllClick} /> */}
+                        <p className='mt-5'>Q&A discussions will appear here once they begin.</p>
                     </div>
                 </WhiteBox>
 
                 <WhiteBox className='bg-white recent-resources-box mt-5'>
                     <h2 className="section-heading">Recent Resources & Guidelines</h2>
                     <p className="my-4">Explore our latest resources and guidelines to enhance your experience. Stay informed with up-to-date information and best practices!</p>
-                    <ButtonSecondary text="View all" />
+                    <ButtonSecondary text="View all" onClick={handleViewAllClick} />
                 </WhiteBox>
 
             </div>
+
+            {/* Modal */}
+            <Modal
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+                title="Ask New Question"
+            >
+                <form action="" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group flex-col">
+                        <FormField
+                            element="input"
+                            placeholder="Enter the question..."
+                            className="mt-3"
+                            {...register("studentQuestion", {
+                                required: "This field is required.",
+                            })}
+                            aria-invalid={errors.studentQuestion ? "true" : "false"}
+                        />
+                        {errors.studentQuestion?.type === "required" && (
+                            <p className="text-red-600 text-xs">This field is required.</p>
+                        )}
+                    </div>
+                    <div className="form-group mt-3">
+                        <Button text="Submit" type="submit" />
+                    </div>
+                </form>
+            </Modal>
+
             <aside className='mr-5 h-screen'>
                 <SidebarRight />
             </aside>

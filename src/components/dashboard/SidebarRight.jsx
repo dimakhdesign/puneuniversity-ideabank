@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { UserContext } from '../../context/UserContext';
+
 import WhiteBox from '../../ui/WhiteBox';
 import AssignmentList from '../../ui/AssignmentsList/AssignmentList';
 import Link from '../../ui/Link/Link';
@@ -13,10 +16,15 @@ import './SidebarRight.css';
 
 
 const SidebarRight = () => {
+
+    const { currentUser } = useContext(UserContext); // Access user data from context
+
+    console.log(currentUser)
+
     return (
         <div>
             <WhiteBox>
-                <InfoWithIcon icon={IconProfessor} title="Assigned Professor Details" subtitle="Prof. Ashok More" />
+                <InfoWithIcon icon={IconProfessor} title="Assigned Professor Details" subtitle={currentUser.expert_name} />
             </WhiteBox>
 
             <WhiteBox className='mt-5'>

@@ -1,0 +1,19 @@
+.search-input {
+    display: flex;
+    height: 3.1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #BDBDBD;
+}
+
+.filter-icon {
+    border-radius: 8px;
+    background: var(--color-purple-light);
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.filter-icon svg {
+    fill: var(--color-purple-dark);
+}
