@@ -1,5 +1,6 @@
 .profile-summary p {
     color: var(--color-black-dark);
+    text-transform: capitalize;
 }
 
 .profile-cpmpletion-status p {

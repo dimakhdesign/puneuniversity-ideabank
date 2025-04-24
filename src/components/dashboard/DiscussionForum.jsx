@@ -2,9 +2,7 @@ import React from 'react'
 
 const DiscussionForum = () => {
     return (
-        <div>
-            Q&A Forum
-        </div>
+        <p>Q&A discussions will appear here once they begin.</p>
     )
 }
 

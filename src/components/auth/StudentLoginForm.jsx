@@ -1,13 +1,15 @@
-import React, { useState, useMemo, useEffect } from "react";
+import { API_KEY } from '../../config/apiConfig';
+import { useContext } from "react";
+
+import React, { useState } from "react";
 import FormField from "./FormField";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 import Button from "../../ui/Button/Button";
 
-import { API_KEY } from '../../config/apiConfig';
+
 
 import {
   HiOutlineEnvelope,
@@ -83,12 +85,10 @@ const StudentLoginForm = () => {
         return;
       }
 
-      // Store token or user data if needed
-      // localStorage.setItem("token", result.token);
-      // localStorage.setItem("user", JSON.stringify(user));
-
       // Store user in context
       loginUser(user);
+
+      console.log("Saving to context:", loginUser(user));
 
       // Navigate to dashboard
       navigate("/dashboard-student");
