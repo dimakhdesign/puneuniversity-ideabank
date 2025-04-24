@@ -39,7 +39,7 @@ const ResearchSubmit = () => {
                         <FormField
                             element="textarea"
                             placeholder="Enter your research ideas..."
-                            className="h-32 mt-3"
+                            className="h-32 mt-0"
                             {...register("researchDescription", {
                                 required: "Please enter your research",
                             })}
@@ -50,7 +50,7 @@ const ResearchSubmit = () => {
                         )}
                     </div>
                     <div className="form-group mt-3">
-                        <Button text="Submit" type="submit" />
+                        <Button text="Submit" type="submit" className='!w-auto' />
                     </div>
                 </form>
             </WhiteBox>

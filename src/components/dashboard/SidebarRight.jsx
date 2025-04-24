@@ -17,7 +17,7 @@ const SidebarRight = () => {
 
     const { currentUser } = useContext(UserContext); // Access user data from context
 
-    console.log(currentUser)
+    const deadlines = () => [];
 
     return (
         <div>
@@ -26,7 +26,7 @@ const SidebarRight = () => {
             </WhiteBox>
 
             <WhiteBox className='mt-5'>
-                <InfoWithIcon icon={IconAnnouncement} title="Important Announcements" subtitle="There are no announcements" />
+                <InfoWithIcon icon={IconAnnouncement} title="Important Announcements" subtitle="There are no updates or announcements at the moment." />
             </WhiteBox>
 
             <WhiteBox className='mt-5'>
@@ -35,8 +35,13 @@ const SidebarRight = () => {
                     <div className="image-box rounded-sm border border-stone-300 mt-4 p-1">
                         <img src={ImgDeadline} alt="" className='mx-auto' />
                     </div>
-                    <AssignmentList />
-                    <Link text="View All" />
+                    {deadlines.length >= 1 ? (
+                        <>
+                            <AssignmentList />
+                            <Link text="View All" />
+                        </>
+                    ) : (<p className="mt-3">No upcoming deadlines or reminders.</p>)}
+
                 </div>
             </WhiteBox>
         </div>

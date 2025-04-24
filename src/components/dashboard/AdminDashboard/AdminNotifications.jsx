@@ -1,4 +1,4 @@
-import NotificationItem from '../../ui/Notifications/NotificationItem';
+import NotificationItem from '../../../ui/Notifications/NotificationItem';
 
 const notifications = [
     // { id: '1', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
@@ -8,7 +8,7 @@ const notifications = [
     // { id: '5', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
 ];
 
-const Notifications = ({ notifications = [] }) => {
+const AdminNotifications = () => {
     return (
         <div>
             {notifications.length > 0 ? (
@@ -20,6 +20,6 @@ const Notifications = ({ notifications = [] }) => {
             )}
         </div>
     );
-};
+}
 
-export default Notifications;
+export default AdminNotifications

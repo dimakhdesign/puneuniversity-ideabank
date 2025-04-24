@@ -10,15 +10,16 @@ import IconNotification from '../assets/icon-bell.svg'
 import IconSettings from '../assets/icon-settings.svg'
 
 const menuItems = [
-    { name: "Dashboard", icon: IconDashboard, link: "/dashboard-student" },
-    { name: "Submit Research", icon: IconSubmit, link: "research-submit" },
-    { name: "Q&A Forum", icon: IconForum, link: "discussion-forum" },
-    { name: "Documents & Resources", icon: IconDocument, link: "resources" },
-    { name: "Notifications", icon: IconNotification, link: "notifications" },
-    { name: "Settings & Profile", icon: IconSettings, link: "settings" },
+    { name: "Dashboard", icon: IconDashboard, link: "/dashboard-admin" },
+    { name: "Submissions", icon: IconSubmit, link: "submissions" },
+    { name: "Expert Management", icon: IconForum, link: "expert-management" },
+    { name: "Q&A Forum", icon: IconDocument, link: "discussion-forum" },
+    { name: "Document Repository", icon: IconDocument, link: "documents-repository" },
+    { name: "Notifications", icon: IconSettings, link: "notifications" },
+    { name: "Settings", icon: IconSettings, link: "settings" },
 ];
 
-const DashboardLayout = () => {
+const AdminDashboardLayout = () => {
     return (
         <div className="flex h-screen">
             {/* Sidebar */}
@@ -35,4 +36,4 @@ const DashboardLayout = () => {
     )
 }
 
-export default DashboardLayout
+export default AdminDashboardLayout

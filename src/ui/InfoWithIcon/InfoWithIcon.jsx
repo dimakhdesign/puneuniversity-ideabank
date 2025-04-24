@@ -3,7 +3,7 @@ import './InfoWithIcon.css';
 
 const InfoWithIcon = ({ icon, title, subtitle, alt = "" }) => {
     return (
-        <div className="InfoWithIcon flex items-start gap-3">
+        <div className="InfoWithIcon flex items-center gap-3">
             <div className="icon shrink-0">
                 <img src={icon} alt={alt} className="w-10 h-10 object-contain" />
             </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './UserProfileSettings.css';
-import IconUser from '../../assets/user-image.svg';
+import { NavLink } from 'react-router-dom';
 import { HiOutlineCog6Tooth, HiMiniUserCircle } from "react-icons/hi2";
 
 const UserProfileSettings = ({ handleClick }) => {
@@ -20,8 +20,8 @@ const UserProfileSettings = ({ handleClick }) => {
                 {showSettingMenu && (
                     <div className="setting-menu absolute top-[100%] left-0 bg-white w-full p-3 rounded-md">
                         <ul>
-                            <li>Profile</li>
-                            <li>Logout</li>
+                            <li><NavLink to='/dashboard-student/settings'>Profile</NavLink></li>
+                            <li><NavLink>Logout</NavLink></li>
                         </ul>
                     </div>
                 )}

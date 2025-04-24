@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { UserContext } from '../../context/UserContext';
 
 import WhiteBox from "../../ui/WhiteBox";
-import UserImage from '../../assets/user-profile-image.svg';
 import ButtonSecondary from "../../ui/Button/ButtonSecondary";
 import AccordionGroup from "../../ui/Accordion/AccordionGroup";
 import Link from "../../ui/Link/Link";
@@ -36,6 +35,8 @@ const faqItems = [
 ];
 
 const Overview = () => {
+
+    const [showUpdateBtn, setShowUpdateBtn] = useState(false);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -121,18 +122,11 @@ const Overview = () => {
         navigate('/dashboard-student/resources')
     }
 
-    const handleUploadDoc = () => {
-        console.log("Please upload the document!")
-    }
-
     return (
         <div className="grid grid-cols-[65%_35%] gap-4">
             <div className='ml-2 h-screen'>
 
                 <WhiteBox className='profile-box flex gap-3'>
-                    {/* <div className="user-image">
-                        <img src={UserImage} alt="User" />
-                    </div> */}
                     <div className="profile-summary">
                         {studentData && (
                             <p>
@@ -141,8 +135,9 @@ const Overview = () => {
                             </p>
                         )}
                         <div className='profile-cpmpletion-status flex gap-3 items-center mt-3'>
-                            <p>Your profile is 50% completed.</p>
-                            <ButtonSecondary text="Update Now!" onClick={handleUpdateProfile} />
+                            <p>Your profile is 100% completed.</p>
+                            {showUpdateBtn && <ButtonSecondary text="Update Now!" onClick={handleUpdateProfile} />}
+
                         </div>
                     </div>
                 </WhiteBox>

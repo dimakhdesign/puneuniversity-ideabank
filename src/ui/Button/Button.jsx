@@ -1,9 +1,9 @@
 import "./Button.css";
 
-const Button = ({ text, onClick, type }) => {
+const Button = ({ text, onClick, type = "button", className = "" }) => {
   return (
     <>
-      <button type={type} onClick={onClick} className="btn-primary cursor-pointer">
+      <button type={type} onClick={onClick} className={`btn-primary cursor-pointer ${className}`}>
         {text}
       </button>
     </>
