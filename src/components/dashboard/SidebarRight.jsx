@@ -13,8 +13,6 @@ import ImgDeadline from '../../assets/img-deadline.svg';
 
 import './SidebarRight.css';
 
-
-
 const SidebarRight = () => {
 
     const { currentUser } = useContext(UserContext); // Access user data from context
@@ -28,7 +26,7 @@ const SidebarRight = () => {
             </WhiteBox>
 
             <WhiteBox className='mt-5'>
-                <InfoWithIcon icon={IconAnnouncement} title="Important Announcements" subtitle="Online Seminar" />
+                <InfoWithIcon icon={IconAnnouncement} title="Important Announcements" subtitle="There are no announcements" />
             </WhiteBox>
 
             <WhiteBox className='mt-5'>

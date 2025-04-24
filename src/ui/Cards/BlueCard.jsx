@@ -19,7 +19,7 @@ const BlueCard = () => {
             </div>
             <div className="body">
                 <div className="btn-upload rounded-full text-center cursor-pointer" onClick={handleUploadDoc}>Upload</div>
-                {/* <input type="file" className="btn-upload rounded-full text-center cursor-pointer" /> */}
+                <input type="file" className="btn-upload rounded-full text-center cursor-pointer" />
             </div>
         </div>
     )

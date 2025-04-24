@@ -15,3 +15,7 @@
 .user-profile-setting .setting-menu ul li:not(:last-child) {
     margin-bottom: .5rem;
 }
+
+.user-profile-setting .icon-user {
+    fill: var(--color-purple-dark);
+}

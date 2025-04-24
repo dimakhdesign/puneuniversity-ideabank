@@ -21,7 +21,7 @@ const ResearchSubmit = () => {
 
             <WhiteBox className='mt-5'>
                 <form action="" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-group flex-col">
+                    <div className="form-group flex-col mb-3">
                         <FormField
                             element="input"
                             placeholder="Enter research title..."

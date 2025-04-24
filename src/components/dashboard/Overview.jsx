@@ -43,9 +43,8 @@ const Overview = () => {
 
     const { currentUser } = useContext(UserContext); // Access user data from context
 
+    // Store current student id in studentId
     const studentId = currentUser.id;
-
-    console.log(currentUser)
 
     const navigate = useNavigate();
 
@@ -90,7 +89,7 @@ const Overview = () => {
                         email,
                         college_name,
                         dob,
-                        student_type
+                        student_type,
                     } = result.field_array;
 
                     // Update the state with student data
@@ -131,9 +130,9 @@ const Overview = () => {
             <div className='ml-2 h-screen'>
 
                 <WhiteBox className='profile-box flex gap-3'>
-                    <div className="user-image">
+                    {/* <div className="user-image">
                         <img src={UserImage} alt="User" />
-                    </div>
+                    </div> */}
                     <div className="profile-summary">
                         {studentData && (
                             <p>

@@ -18,7 +18,7 @@ const Notifications = ({ notifications = [] }) => {
                     <NotificationItem key={notification.id} notification={notification} />
                 ))
             ) : (
-                <p>Currently there are no new notifications.</p>
+                <p>No new notifications at the moment.</p>
             )}
         </div>
     );

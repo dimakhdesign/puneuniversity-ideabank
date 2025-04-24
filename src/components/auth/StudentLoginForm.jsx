@@ -76,6 +76,8 @@ const StudentLoginForm = () => {
 
       const user = result.field_array;
 
+      console.log(user);
+
       // Match email and password with the response
       if (formData.email !== user.email || formData.password !== user.pass) {
         setError("password", {

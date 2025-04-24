@@ -2,7 +2,7 @@ import React from 'react'
 
 const Resources = () => {
     return (
-        <p>There are no resources found.</p>
+        <p>No resources available at the moment.</p>
     )
 }
 

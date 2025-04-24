@@ -1,8 +1,7 @@
+import { useState } from 'react';
 import './UserProfileSettings.css';
 import IconUser from '../../assets/user-image.svg';
-import { HiOutlineCog6Tooth } from "react-icons/hi2";
-import { useState } from 'react';
-
+import { HiOutlineCog6Tooth, HiMiniUserCircle } from "react-icons/hi2";
 
 const UserProfileSettings = ({ handleClick }) => {
 
@@ -15,8 +14,7 @@ const UserProfileSettings = ({ handleClick }) => {
     return (
         <>
             <div className="user-profile-setting relative flex items-center gap-2 cursor-pointer" onClick={handleSettingsClick}>
-                {/* <HiMiniUserCircle className='text-xl' /> */}
-                <img src={IconUser} alt="User" className='rounded-full' />
+                <HiMiniUserCircle className='icon-user text-4xl' />
                 <HiOutlineCog6Tooth className='setting-icon text-2xl' onClick={handleClick} />
 
                 {showSettingMenu && (
