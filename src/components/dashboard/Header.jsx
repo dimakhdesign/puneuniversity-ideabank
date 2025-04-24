@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const Header = () => {
 
+
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleToggleClick = () => {
@@ -16,8 +17,8 @@ const Header = () => {
   }
 
   return (
-    <div className='p-5 flex items-center'>
-      <div className="logo-wrapper flex items-center gap-8">
+    <div className='p-3 flex items-start bg-white'>
+      {/* <div className="logo-wrapper flex items-center gap-8">
         <div className="logo flex items-center">
           <Logo />
           <div className="name">Pune University Ayush<br /><span>IDEA BANK</span></div>
@@ -25,7 +26,7 @@ const Header = () => {
         <div className="toggler" onClick={handleToggleClick}>
           <HiOutlineBars3 className="text-xl cursor-pointer" />
         </div>
-      </div>
+      </div> */}
       <div className="searchbar ms-8">
         <SearchBar />
       </div>

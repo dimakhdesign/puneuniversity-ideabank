@@ -1,3 +1,6 @@
+.sidebar-menu {
+    transition: 0.3s linear;
+}
 .sidebar-menu li:not(:last-child) {
     border-bottom: 1px solid var(--color-grey);
     margin-bottom: 0.7rem;
@@ -23,4 +26,19 @@
     background-color: var(--color-purple-light);
     color: var(--color-purple-dark);
     font-weight: 700;
+}
+.open {
+    width: auto;
+    transition: 0.3s linear;
+}
+
+.closed .logo, .closed .name, .closed .sidebar-menu li a span {
+    display: none;
+}
+
+.closed .sidebar-menu li {
+    width: fit-content;
+}
+.closed .toggler {
+    margin: 0.625rem;
 }

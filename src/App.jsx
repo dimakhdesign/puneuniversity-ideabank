@@ -14,6 +14,8 @@ import Notifications from './components/dashboard/Notifications';
 import Settings from './components/dashboard/Settings';
 
 import { UserProvider } from "./context/UserContext";
+import ExpertDashboard from "./components/dashboard/expert-dashboard/ExpertDashboard";
+import StudentList from "./components/dashboard/expert-dashboard/StudentList";
 
 
 // import ExpertDashboard from "./pages/ExpertDashboard";
@@ -33,6 +35,9 @@ function App() {
             <Route path="/expert-login" element={<ExpertLogin />}></Route>
             <Route path="/student" element={<Student />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/expert-dashboard" element={<ExpertDashboard/>}>
+              <Route index element={<StudentList/>}></Route>
+            </Route>
             <Route path="/dashboard-student" element={<DashboardLayout />}>
               <Route index element={<Overview />} />
               <Route path="research-submit" element={<ResearchSubmit />} />
