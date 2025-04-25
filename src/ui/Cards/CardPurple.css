@@ -1,0 +1,11 @@
+.cards-wrapper .card.purple-card {
+    background-color: var(--color-purple-dark);
+}
+
+.cards-wrapper .card.purple-card::before {
+    background: #4527A0;
+}
+
+.cards-wrapper .card.purple-card::after {
+    background: #5E35B1;
+}

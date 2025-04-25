@@ -1,7 +1,9 @@
 import ProgressBar from '../../ui/ProgressBar/ProgressBar';
 import IconProgress from '../../assets/icon-progress.svg';
 
-const PurpleCard = () => {
+import './CardPurple.css';
+
+const Purple = () => {
     return (
         <div className="card purple-card flex flex-col justify-center p-5 gap-5 text-white">
             <div className="header flex gap-3">
@@ -24,4 +26,4 @@ const PurpleCard = () => {
     )
 }
 
-export default PurpleCard
+export default Purple

@@ -1,11 +1,11 @@
-import { API_KEY } from '../../config/apiConfig';
+import { API_KEY } from '../../../config/apiConfig';
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../../context/UserContext";
 
-import FormField from "../auth/FormField";
-import WhiteBox from "../../ui/WhiteBox";
-import Button from "../../ui/Button/Button";
+import FormField from "../../auth/FormField";
+import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
+import Button from "../../../ui/Button/Button";
 
 const Settings = () => {
     const { currentUser } = useContext(UserContext);
@@ -66,6 +66,7 @@ const Settings = () => {
         },
     });
 
+    // API call on submission
     const onSubmitProfile = async (formData) => {
 
         try {
@@ -81,6 +82,7 @@ const Settings = () => {
                     txt_college: formData.college_name,
                     dob: formData.dob,
                     txt_type: formData.student_type,
+                    txt_password: formData.confirmPassword,
                     Authorization_key: API_KEY,
                 }),
             });
@@ -89,44 +91,21 @@ const Settings = () => {
 
             const result = await res.json();
             console.log("Profile updated", result);
+
+            reset({ password: "", confirmPassword: "" }); // Clear password fields
         } catch (error) {
             console.error("Error:", error);
         }
     };
-
-    // const onSubmitPassword = async (formData) => {
-    //     try {
-    //         const res = await fetch("/api/UpdateStudentprofile.php", {
-    //             method: "PUT",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 student_id: currentUser.id,
-    //                 pass: formData.password,
-    //                 Authorization_key: API_KEY,
-    //             }),
-    //         });
-
-    //         if (!res.ok) throw new Error("Failed to update password");
-
-    //         const result = await res.json();
-    //         console.log("Password updated", result);
-
-    //         reset({ password: "", confirmPassword: "" }); // Clear password fields
-    //     } catch (error) {
-    //         console.error("Error:", error);
-    //     }
-    // };
 
     return (
         <>
             {/* Profile Section */}
             <WhiteBox>
                 <form onSubmit={handleSubmit(onSubmitProfile)}>
-                    <p className="mb-3 font-medium">1. Profile Information</p>
+                    <p className="mb-3 font-bold">1. Profile Information</p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5 mb-5">
                         <div className="flex flex-col gap-2">
                             <label>Name</label>
                             <FormField {...register("name", { required: true })} />
@@ -149,14 +128,8 @@ const Settings = () => {
                             <FormField {...register("student_type")} />
                         </div>
                     </div>
-                    <Button text="Update Details" type="submit" className="!w-max" />
-                </form>
-            </WhiteBox>
 
-            {/* Password Section */}
-            {/* <WhiteBox className="mt-5">
-                <form onSubmit={handleSubmit(onSubmitPassword)}>
-                    <p className="mb-3 font-medium">2. Security</p>
+                    <p className="mb-3 font-bold">2. Security</p>
                     <div className="flex flex-col gap-2 mb-5">
                         <label>Password</label>
                         <FormField
@@ -164,7 +137,7 @@ const Settings = () => {
                             {...register("password", { required: true })}
                         />
                         {errors.password && (
-                            <span className="text-red-500">Password is required</span>
+                            <span className="text-red-500 text-xs">Password is required</span>
                         )}
                     </div>
                     <div className="flex flex-col gap-2 mb-5">
@@ -178,15 +151,15 @@ const Settings = () => {
                             })}
                         />
                         {errors.confirmPassword && (
-                            <span className="text-red-500">
+                            <span className="text-red-500 text-xs">
                                 {errors.confirmPassword.message}
                             </span>
                         )}
                     </div>
-                    <Button text="Change Password" type="submit" className="!w-max" />
-                </form>
-            </WhiteBox> */}
 
+                    <Button text="Update Details" type="submit" className="!w-max" />
+                </form>
+            </WhiteBox>
         </>
     );
 };

@@ -1,4 +1,4 @@
-import logo from "../assets/header-logo-1.svg";
+import logo from "../../assets/header-logo-1.svg";
 
 const Logo = ({ classname }) => {
   return (

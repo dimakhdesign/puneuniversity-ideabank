@@ -15,9 +15,20 @@
         }
     }
 
+    button {
+        margin-right: 8px;
+
+        svg {
+            font-size: 1.3rem;
+            stroke: #8E8D8F;
+        }
+    }
+
     p {
         position: absolute;
         top: 100%;
+        font-size: 0.7rem;
+        line-height: 1;
     }
 }
 

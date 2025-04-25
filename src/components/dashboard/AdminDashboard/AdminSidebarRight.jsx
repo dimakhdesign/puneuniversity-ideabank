@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from '../../../context/UserContext';
 
-import WhiteBox from '../../../ui/WhiteBox';
+import WhiteBox from '../../../ui/WhiteBox/WhiteBox';
 import AssignmentList from '../../../ui/AssignmentsList/AssignmentList';
 import Link from '../../../ui/Link/Link';
 import InfoWithIcon from '../../../ui/InfoWithIcon/InfoWithIcon';

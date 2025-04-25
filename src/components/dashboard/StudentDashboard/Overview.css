@@ -1,5 +1,10 @@
 .profile-summary p {
     color: var(--color-black-dark);
+    line-height: 1.45;
+}
+
+.profile-summary p span {
+    font-weight: 600;
     text-transform: capitalize;
 }
 
@@ -50,14 +55,6 @@
     z-index: 1;
 }
 
-.cards-wrapper .card.purple-card {
-    background-color: var(--color-purple-dark);
-}
-
-.cards-wrapper .card.blue-card {
-    background-color: var(--color-blue-dark);
-}
-
 .cards-wrapper .card::before {
     content: '';
     position: absolute;
@@ -78,20 +75,4 @@
     height: 211px;
     border-radius: 100px;
     z-index: -2;
-}
-
-.cards-wrapper .card.purple-card::before {
-    background: #4527A0;
-}
-
-.cards-wrapper .card.purple-card::After {
-    background: #5E35B1;
-}
-
-.cards-wrapper .card.blue-card::before {
-    background-color: #1565C0;
-}
-
-.cards-wrapper .card.blue-card::After {
-    background-color: #1976D3;
 }

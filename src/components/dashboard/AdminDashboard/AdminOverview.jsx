@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import WhiteBox from "../../../ui/WhiteBox";
+import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
 import AdminSidebarRight from "../../dashboard/AdminDashboard/AdminSidebarRight";
 import Button from "../../../ui/Button/Button";
 import Link from "../../../ui/Link/Link";

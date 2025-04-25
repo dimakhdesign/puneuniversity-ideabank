@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from "../../components/Logo";
+import Logo from "../Logo/Logo";
 import { NavLink } from 'react-router-dom';
 import { HiOutlineBars3 } from "react-icons/hi2";
 import './SiderbarLeft.css';
@@ -18,8 +18,8 @@ const SiderbarLeft = ({ menuItems }) => {
                     <Logo />
                     <div className="name">Pune University Ayush<br /><span>IDEA BANK</span></div>
                 </div>
-                <div className="toggler" onClick={handleToggleClick}>
-                    <HiOutlineBars3 className="text-xl cursor-pointer" />
+                <div className="toggler cursor-pointer" onClick={handleToggleClick}>
+                    <HiOutlineBars3 className="text-xl" />
                 </div>
             </div>
             <ul className="sidebar-menu">

@@ -9,12 +9,12 @@ import Dashboard from "./features/Dashboard";
 
 // Student Dashboard
 import DashboardLayout from './pages/DashboardLayout'
-import Overview from './components/dashboard/Overview';
-import ResearchSubmit from './components/dashboard/ResearchSubmit';
-import DiscussionForum from './components/dashboard/DiscussionForum';
-import Resources from './components/dashboard/Resources';
-import Notifications from './components/dashboard/Notifications';
-import Settings from './components/dashboard/Settings';
+import Overview from './components/dashboard/StudentDashboard/Overview';
+import ResearchSubmit from './components/dashboard/StudentDashboard/ResearchSubmit';
+import DiscussionForum from './components/dashboard/StudentDashboard/DiscussionForum';
+import Resources from './components/dashboard/StudentDashboard/Resources';
+import Notifications from './components/dashboard/StudentDashboard/Notifications';
+import Settings from './components/dashboard/StudentDashboard/Settings';
 
 import AdminOverview from "./components/dashboard/AdminDashboard/AdminOverview";
 

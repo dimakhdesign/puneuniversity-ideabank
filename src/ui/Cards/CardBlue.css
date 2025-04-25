@@ -1,0 +1,11 @@
+.cards-wrapper .card.blue-card {
+    background-color: var(--color-blue-dark);
+}
+
+.cards-wrapper .card.blue-card::before {
+    background-color: #1565C0;
+}
+
+.cards-wrapper .card.blue-card::after {
+    background-color: #1976D3;
+}

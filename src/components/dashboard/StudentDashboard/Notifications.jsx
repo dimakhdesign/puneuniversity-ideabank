@@ -1,4 +1,4 @@
-import NotificationItem from '../../ui/Notifications/NotificationItem';
+import NotificationItem from '../../../ui/Notifications/NotificationItem';
 
 const notifications = [
     // { id: '1', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },

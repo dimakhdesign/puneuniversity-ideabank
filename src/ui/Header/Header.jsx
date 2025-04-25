@@ -1,8 +1,8 @@
-import Logo from "../Logo";
+import Logo from "../Logo/Logo";
 import './Header.css';
-import SearchBar from "../../ui/SearchBar/SearchBar";
-import UserProfileSettings from "../../ui/Profile/UserProfileSettings";
-import NotificationBell from "../../ui/Notifications/NotificationBell";
+import SearchBar from "../SearchBar/SearchBar";
+import UserProfileSettings from "../Profile/UserProfileSettings";
+import NotificationBell from "../Notifications/NotificationBell";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import { useState } from "react";
 

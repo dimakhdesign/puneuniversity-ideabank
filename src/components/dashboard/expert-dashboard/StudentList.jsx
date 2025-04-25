@@ -1,5 +1,5 @@
 import React from "react";
-import WhiteBox from "../../../ui/WhiteBox";
+import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
 import UserImage from '../../../assets/user-profile-image.svg';
 
 function StudentList() {

@@ -1,7 +1,7 @@
-import FormField from '../auth/FormField';
+import FormField from '../../auth/FormField';
 import { useForm } from "react-hook-form";
-import Button from '../../ui/Button/Button';
-import WhiteBox from '../../ui/WhiteBox';
+import Button from '../../../ui/Button/Button';
+import WhiteBox from '../../../ui/WhiteBox/WhiteBox';
 
 const ResearchSubmit = () => {
 
@@ -12,7 +12,7 @@ const ResearchSubmit = () => {
     } = useForm();
 
     const onSubmit = async (formData) => {
-        // console.log(formData);
+
     }
 
     return (

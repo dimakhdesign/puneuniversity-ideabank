@@ -1,4 +1,4 @@
-import Header from '../components/dashboard/Header';
+import Header from '../ui/Header/Header';
 import SiderbarLeft from '../ui/SidebarLeft/SiderbarLeft';
 import { Outlet } from 'react-router-dom';
 

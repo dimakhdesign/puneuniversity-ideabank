@@ -1,4 +1,4 @@
-import Header from '../components/dashboard/Header';
+import Header from '../ui/Header/Header';
 import SiderbarLeft from '../ui/SidebarLeft/SiderbarLeft';
 import { Outlet } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const menuItems = [
     { name: "Dashboard", icon: IconDashboard, link: "/dashboard-student" },
     { name: "Submit Research", icon: IconSubmit, link: "research-submit" },
     { name: "Q&A Forum", icon: IconForum, link: "discussion-forum" },
-    { name: "Documents & Resources", icon: IconDocument, link: "resources" },
+    // { name: "Documents & Resources", icon: IconDocument, link: "resources" },
     { name: "Notifications", icon: IconNotification, link: "notifications" },
     { name: "Settings & Profile", icon: IconSettings, link: "settings" },
 ];

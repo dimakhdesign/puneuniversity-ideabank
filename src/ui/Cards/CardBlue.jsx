@@ -1,10 +1,15 @@
 import React, { useRef } from 'react';
 import IconDocumentUpload from '../../assets/icon-document-upload.svg';
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
-const BlueCard = () => {
+import './CardBlue.css';
+
+const CardBlue = () => {
 
     const fileInputRef = useRef(null);
+
+    const navigate = useNavigate();
 
     const handleUploadClick = () => {
         fileInputRef.current.click(); // trigger file input when button is clicked
@@ -33,30 +38,31 @@ const BlueCard = () => {
                     <img src={IconDocumentUpload} alt="" />
                 </div>
                 <div className="text">
-                    <h5>Upload Final Document</h5>
-                    <p>Current Status : Approved</p>
+                    <h5>Submit Research</h5>
+                    <p>Current Status : Pending Submission</p>
                 </div>
             </div>
             <div className="body">
                 {/* <div className="btn-upload rounded-full text-center cursor-pointer" onClick={handleUploadDoc}>Upload</div> */}
                 {/* <input type="file" className="btn-upload rounded-full text-center cursor-pointer" /> */}
                 <div
-                    onClick={handleUploadClick}
+                    // onClick={handleUploadClick}
+                    onClick={() => navigate('/dashboard-student/research-submit')}
                     className="btn-upload rounded-full text-center cursor-pointer hover:bg-gray-100 transition"
                 >
-                    Upload
+                    Submit
                 </div>
-                <input
+                {/* <input
                     type="file"
                     accept="application/pdf"
                     ref={fileInputRef}
                     onChange={handleFileChange}
                     style={{ display: 'none' }}
-                />
+                /> */}
                 <Toaster />
             </div>
         </div>
     )
 }
 
-export default BlueCard
+export default CardBlue
