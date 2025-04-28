@@ -1,11 +1,34 @@
-import React from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-const AuthContext = () => {
+const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [authData, setAuthData] = useState(null);
+
+  // Rehydrate authData from localStorage on component mount
+  useEffect(() => {
+    const storedAuthData = localStorage.getItem("authData");
+
+    if (storedAuthData) {
+      setAuthData(JSON.parse(storedAuthData));
+    }
+  }, []);
+
+  const login = (token, userId) => {
+    setAuthData({ token, userId });
+    localStorage.setItem("authData", JSON.stringify({ token, userId }));
+  };
+
+  const logout = () => {
+    setAuthData(null);
+    localStorage.removeItem("authData");
+  };
+
   return (
-    <div>
-      <h1>This page provides and Authentication Context</h1>
-    </div>
+    <AuthContext.Provider value={{ authData, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export default AuthContext;
+export const useAuth = () => useContext(AuthContext);

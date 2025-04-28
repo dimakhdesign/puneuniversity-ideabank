@@ -1,29 +1,21 @@
 import { API_KEY } from '../../../config/apiConfig';
-import { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { UserContext } from '../../../context/UserContext';
-
+import { useAuth } from '../../../context/AuthContext';
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
 import ButtonSecondary from "../../../ui/Button/ButtonSecondary";
 import AccordionGroup from "../../../ui/Accordion/AccordionGroup";
 import Link from "../../../ui/Link/Link";
-
 import SidebarRight from "../../../ui/SidebarRight/SidebarRight";
 import CardPurple from '../../../ui/Cards/CardPurple';
 import CardBlue from '../../../ui/Cards/CardBlue';
-
 import Modal from '../../../ui/Modal/Modal';
 import Button from '../../../ui/Button/Button';
 import FormField from '../../auth/FormField';
-
 import './Overview.css';
-import { useNavigate } from 'react-router-dom';
 
 const faqItems = [
-    {
-        title: "Can you tell me how to ask questions on this platform?",
-        content: "To ask questions on this platform, simply type your query in the designated input area and hit 'Enter' or click the 'Submit' button. Make sure your question is clear and concise for the best responses!",
-    },
     {
         title: "Can you tell me how to ask questions on this platform?",
         content: "To ask questions on this platform, simply type your query in the designated input area and hit 'Enter' or click the 'Submit' button. Make sure your question is clear and concise for the best responses!",
@@ -35,32 +27,14 @@ const faqItems = [
 ];
 
 const Overview = () => {
-
-    const [showUpdateBtn, setShowUpdateBtn] = useState(false);
-
     const [showModal, setShowModal] = useState(false);
-
     const [studentData, setStudentData] = useState(null);
-
-    const { currentUser } = useContext(UserContext); // Access user data from context
-
-    // Store current student id in studentId
-    const studentId = currentUser.id;
-
+    const { authData } = useAuth();  // Get authData from context
+    const studentId = authData?.userId; // Use optional chaining to avoid errors if authData is not set
     const navigate = useNavigate();
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
-
-    const onSubmit = async (formData) => {
-        console.log(formData);
-    }
-
     useEffect(() => {
-        if (!studentId) return;
+        if (!studentId) return;  // Ensure studentId is available before making the request
 
         const getStudentData = async () => {
             try {
@@ -80,6 +54,7 @@ const Overview = () => {
                 }
 
                 const result = await response.json();
+                console.log(result);
 
                 // Check if the response contains the 'field_array'
                 if (result.Response && result.field_array) {
@@ -103,50 +78,74 @@ const Overview = () => {
                         student_type,
                     });
                 } else {
-                    setError(result.msg || 'Failed to fetch student data');
+                    console.error(result.msg || 'Failed to fetch student data');
                 }
             } catch (error) {
                 console.error('Get User error:', error);
-                setError(error.message);
             }
         };
 
         getStudentData();
-    }, []);
-
-    const handleUpdateProfile = () => {
-        navigate('/dashboard-student/settings')
-    }
+    }, [studentId]);  // Re-run the effect when studentId changes
 
     const handleViewAllClick = () => {
-        navigate('/dashboard-student/discussion-forum')
+        navigate('/dashboard-student/discussion-forum');
+    };
+
+    const {
+        register,
+        handleSubmit,
+        setError,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = async (formData) => {
+        const postQuestion = async () => {
+            try {
+                const response = await fetch('/api/submitQ&A.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Authorization_key: API_KEY,
+                        student_id: studentId,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+                console.log(result);
+
+            } catch (error) {
+                console.error('Get User error:', error);
+            }
+        };
+        postQuestion();
     }
 
     return (
         <div className="grid grid-cols-[65%_35%] gap-4">
             <div className='ml-2 h-screen'>
-
                 <WhiteBox className='profile-box flex gap-3'>
                     <div className="profile-summary">
-                        {studentData && (
+                        {studentData ? (
                             <p>
                                 Welcome to our platform,<br />
                                 <span>{`${studentData.name} !`}</span> Here’s a quick overview of what you can expect.
                             </p>
+                        ) : (
+                            "Loading..."
                         )}
-                        {/* <div className='profile-cpmpletion-status flex gap-3 items-center mt-3'>
-                            <p>Your profile is 100% completed.</p>
-                            {showUpdateBtn && <ButtonSecondary text="Update Now!" onClick={handleUpdateProfile} />}
 
-                        </div> */}
                     </div>
                 </WhiteBox>
 
                 <div className="cards-wrapper flex gap-4 mt-5">
-                    {/* Purple Card */}
                     <CardPurple />
-
-                    {/* Blue Card */}
                     <CardBlue />
                 </div>
 
@@ -158,16 +157,8 @@ const Overview = () => {
                     <div className="accordion-wrapper border-t-1 border-gray-200 mt-4">
                         <AccordionGroup items={faqItems} />
                         <Link text="View All" className="mt-3" onClick={handleViewAllClick} />
-                        {/* <p className='mt-5'>Q&A discussions will appear here once they begin.</p> */}
                     </div>
                 </WhiteBox>
-
-                {/* <WhiteBox className='bg-white recent-resources-box mt-5'>
-                    <h2 className="section-heading">Recent Resources & Guidelines</h2>
-                    <p className="my-4">Explore our latest resources and guidelines to enhance your experience. Stay informed with up-to-date information and best practices!</p>
-                    <ButtonSecondary text="View all" onClick={handleViewAllClick} />
-                </WhiteBox> */}
-
             </div>
 
             {/* Modal */}
@@ -176,7 +167,7 @@ const Overview = () => {
                 onClose={() => setShowModal(false)}
                 title="Ask New Question"
             >
-                <form action="" onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group flex-col">
                         <FormField
                             element="input"
@@ -201,7 +192,7 @@ const Overview = () => {
                 <SidebarRight />
             </aside>
         </div>
-    )
-}
+    );
+};
 
-export default Overview
+export default Overview;

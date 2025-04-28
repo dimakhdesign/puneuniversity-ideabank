@@ -16,7 +16,7 @@ const SiderbarLeft = ({ menuItems }) => {
             <div className="logo-wrapper flex items-center gap-8 pt-3">
                 <div className="logo flex items-center">
                     <Logo />
-                    <div className="name">Pune University Ayush<br /><span>IDEA BANK</span></div>
+                    <div className="name">University Of Pune<br /><span>IDEA BANK</span></div>
                 </div>
                 <div className="toggler cursor-pointer" onClick={handleToggleClick}>
                     <HiOutlineBars3 className="text-xl" />

@@ -1,14 +1,18 @@
 import { API_KEY } from '../../../config/apiConfig';
-import { useContext, useEffect, useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../../../context/UserContext";
+// import { UserContext } from "../../../context/UserContext";
 
 import FormField from "../../auth/FormField";
 import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
 import Button from "../../../ui/Button/Button";
 
 const Settings = () => {
-    const { currentUser } = useContext(UserContext);
+
+    const { authData } = useAuth();  // Get authData from context
+
+    const studentId = authData.userId;
 
     const [studentInfo, setStudentInfo] = useState({});
 
@@ -22,7 +26,7 @@ const Settings = () => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        student_id: currentUser.id,
+                        student_id: studentId,
                         Authorization_key: API_KEY,
                     }),
                 });
