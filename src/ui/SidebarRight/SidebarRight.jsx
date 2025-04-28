@@ -17,6 +17,7 @@ const SidebarRight = () => {
     const { authData } = useAuth();  // Get authData from context
     const studentId = authData?.userId;
 
+    // API Call to fetch the student data
     useEffect(() => {
         if (!studentId) return;
 
@@ -38,7 +39,7 @@ const SidebarRight = () => {
                 }
 
                 const result = await response.json();
-                console.log(result);
+                // console.log(result);
 
                 // Check if the response contains the 'field_array'
                 if (result.Response && result.field_array) {
@@ -58,6 +59,37 @@ const SidebarRight = () => {
         };
 
         getStudentData();
+    }, [studentId]);  // Re-run the effect when studentId changes
+
+    // API Call to fetch the announcement
+    useEffect(() => {
+
+        const getAnnouncements = async () => {
+            try {
+                const response = await fetch('/api/getAnnouncement.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Authorization_key: API_KEY,
+                        student_id: studentId,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+                // console.log(result);
+
+            } catch (error) {
+                console.error('Get User error:', error);
+            }
+        };
+
+        getAnnouncements();
     }, [studentId]);  // Re-run the effect when studentId changes
 
     return (

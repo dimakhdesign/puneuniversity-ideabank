@@ -443,7 +443,9 @@ const StudentLoginForm = () => {
         Authorization_key: API_KEY,
       };
 
-      const response = await fetch("/api/loginStudent.php", {
+      // const response = await fetch("/api/loginStudent.php", {
+      const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",

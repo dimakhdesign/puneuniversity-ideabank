@@ -29,12 +29,22 @@ const faqItems = [
 const Overview = () => {
     const [showModal, setShowModal] = useState(false);
     const [studentData, setStudentData] = useState(null);
-    const { authData } = useAuth();  // Get authData from context
-    const studentId = authData?.userId; // Use optional chaining to avoid errors if authData is not set
+
+    const { authData } = useAuth();
+    const studentId = authData?.userId;
     const navigate = useNavigate();
 
+    const {
+        register,
+        handleSubmit,
+        setError,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    // API call to fetch student data based on the student ID
     useEffect(() => {
-        if (!studentId) return;  // Ensure studentId is available before making the request
+        if (!studentId) return;
 
         const getStudentData = async () => {
             try {
@@ -54,7 +64,7 @@ const Overview = () => {
                 }
 
                 const result = await response.json();
-                console.log(result);
+                // console.log(result);
 
                 // Check if the response contains the 'field_array'
                 if (result.Response && result.field_array) {
@@ -88,17 +98,8 @@ const Overview = () => {
         getStudentData();
     }, [studentId]);  // Re-run the effect when studentId changes
 
-    const handleViewAllClick = () => {
-        navigate('/dashboard-student/discussion-forum');
-    };
 
-    const {
-        register,
-        handleSubmit,
-        setError,
-        formState: { errors },
-    } = useForm();
-
+    // API call to submit the question to the Admin
     const onSubmit = async (formData) => {
         const postQuestion = async () => {
             try {
@@ -110,22 +111,30 @@ const Overview = () => {
                     body: JSON.stringify({
                         Authorization_key: API_KEY,
                         student_id: studentId,
+                        txt_content: formData.studentQuestion,
+                        type: "question"
                     }),
-                });
+                })
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
 
                 const result = await response.json();
-                console.log(result);
+                // console.log(result);
 
             } catch (error) {
                 console.error('Get User error:', error);
             }
         };
         postQuestion();
+        reset();
+        setShowModal(false);
     }
+
+    const handleViewAllClick = () => {
+        navigate('/dashboard-student/discussion-forum');
+    };
 
     return (
         <div className="grid grid-cols-[65%_35%] gap-4">

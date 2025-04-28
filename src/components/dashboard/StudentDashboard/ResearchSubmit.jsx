@@ -1,9 +1,18 @@
+import { API_KEY } from '../../../config/apiConfig';
+import { useAuth } from '../../../context/AuthContext';
+
 import FormField from '../../auth/FormField';
 import { useForm } from "react-hook-form";
 import Button from '../../../ui/Button/Button';
 import WhiteBox from '../../../ui/WhiteBox/WhiteBox';
+import { useState } from 'react';
 
 const ResearchSubmit = () => {
+
+    const [isResearchSubmitted, setIsResearchSubmitted] = useState(false);
+
+    const { authData } = useAuth();
+    const studentId = authData?.userId;
 
     const {
         register,
@@ -13,6 +22,39 @@ const ResearchSubmit = () => {
 
     const onSubmit = async (formData) => {
 
+        console.log(formData);
+
+        const submitResearch = async () => {
+            try {
+                const response = await fetch('/api/submitResearch.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Authorization_key: API_KEY,
+                        student_id: studentId,
+                        txt_title: formData.researchTitle,
+                        txt_research_idea: formData.researchDescription
+                    }),
+                })
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+
+                if (result.msg === "research idea already submited") {
+                    setIsResearchSubmitted(true);
+                }
+                console.log(result);
+
+            } catch (error) {
+                console.error('Get User error:', error);
+            }
+        };
+        submitResearch();
     }
 
     return (
@@ -54,7 +96,6 @@ const ResearchSubmit = () => {
                     </div>
                 </form>
             </WhiteBox>
-
         </>
     )
 }

@@ -80,7 +80,7 @@ const Settings = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    student_id: currentUser.id,
+                    student_id: studentId,
                     txt_name: formData.name,
                     txt_email: formData.email,
                     txt_college: formData.college_name,
