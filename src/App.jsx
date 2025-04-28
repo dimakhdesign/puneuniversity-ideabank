@@ -16,8 +16,6 @@ import Notifications from './components/dashboard/StudentDashboard/Notifications
 import Settings from './components/dashboard/StudentDashboard/Settings';
 
 import AdminOverview from "./components/dashboard/AdminDashboard/AdminOverview";
-import ExpertDashboard from "./components/dashboard/expert-dashboard/ExpertDashboard";
-import StudentList from "./components/dashboard/expert-dashboard/StudentList";
 import AdminDashboardLayout from "./pages/AdminDashboardLayout";
 import Submissions from './components/dashboard/AdminDashboard/Submissions';
 import ExpertManagement from './components/dashboard/AdminDashboard/ExpertManagement';
