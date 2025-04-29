@@ -33,13 +33,80 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 function App() {
   const { authData } = useAuth();
 
+  console.log(authData)
+
   return (
     <BrowserRouter basename="/puneuniversity-ideabank">
       <Routes>
-        <Route path="/" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} />
-        <Route path="/student-register" element={authData ? <Navigate to="/dashboard-student" /> : <Register />} />
-        <Route path="/expert-register" element={authData ? <Navigate to="/dashboard-expert" /> : <Register />} />
-        <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} />
+        {/* <Route path="/" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} /> */}
+        <Route
+          path="/"
+          element={
+            authData ? (
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
+            ) : (
+              <Login />
+            )
+          }
+        />
+        {/* <Route path="/student-register" element={authData ? <Navigate to="/dashboard-student" /> : <Register />} /> */}
+        <Route
+          path="/student-register"
+          element={
+            authData ? (
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
+            ) : (
+              <Register />
+            )
+          }
+        />
+
+        {/* <Route path="/expert-register" element={authData ? <Navigate to="/dashboard-expert" /> : <Register />} /> */}
+
+        <Route
+          path="/expert-register"
+          element={
+            authData ? (
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
+            ) : (
+              <Register />
+            )
+          }
+        />
+
+        {/* <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} /> 
+        */}
+
+        <Route
+          path="/login"
+          element={
+            authData ? (
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
+            ) : (
+              <Login />
+            )
+          }
+        />
 
         {/* Protected Routes (PrivateRoute used here) */}
         <Route path="/dashboard-student" element={<PrivateRoute element={<DashboardLayout />} />}>
