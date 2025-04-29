@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { UserContext } from '../../../context/UserContext';
 
 import WhiteBox from '../../../ui/WhiteBox/WhiteBox';
 import AssignmentList from '../../../ui/AssignmentsList/AssignmentList';
@@ -15,7 +14,6 @@ import ImgDeadline from '../../../assets/img-deadline.svg';
 
 const AdminSidebarRight = () => {
 
-    const { currentUser } = useContext(UserContext); // Access user data from context
 
     const deadlines = () => [];
 

@@ -20,7 +20,7 @@ const UserProfileSettings = ({ handleClick }) => {
     // Logout user
     const handleLogout = () => {
         logout();
-        navigate("/student-login");
+        navigate("/login");
     };
 
     return (
