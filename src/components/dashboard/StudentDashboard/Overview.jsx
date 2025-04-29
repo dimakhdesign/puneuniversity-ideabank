@@ -31,8 +31,10 @@ const Overview = () => {
     const [studentData, setStudentData] = useState(null);
 
     const { authData } = useAuth();
-    const studentId = authData?.userId;
+    const userId = authData?.userId;
     const navigate = useNavigate();
+
+    console.log(userId);
 
     const {
         register,
@@ -44,18 +46,19 @@ const Overview = () => {
 
     // API call to fetch student data based on the student ID
     useEffect(() => {
-        if (!studentId) return;
+        if (!userId) return;
 
         const getStudentData = async () => {
             try {
-                const response = await fetch('/api/profileStudent.php', {
+                const response = await fetch('/api/profileUser.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         Authorization_key: API_KEY,
-                        student_id: studentId,
+                        user_id: userId,
+                        AccessLevel: "Student"
                     }),
                 });
 
@@ -96,7 +99,7 @@ const Overview = () => {
         };
 
         getStudentData();
-    }, [studentId]);  // Re-run the effect when studentId changes
+    }, [userId]);  // Re-run the effect when studentId changes
 
 
     // API call to submit the question to the Admin

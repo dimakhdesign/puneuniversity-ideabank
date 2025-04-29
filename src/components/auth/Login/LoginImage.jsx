@@ -1,9 +1,10 @@
 import React from "react";
+import LoginImage from '../../../assets/login-image.svg'
 
 const loginImage = () => {
   return (
     <div>
-      <img src="/login-image.svg" alt="" />
+      <img src={LoginImage} alt="" />
     </div>
   );
 };

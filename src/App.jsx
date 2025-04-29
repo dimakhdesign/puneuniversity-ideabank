@@ -2,10 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 
 // Import your components
-import StudentLogin from "./pages/StudentLogin";
-import ExpertLogin from "./pages/ExpertLogin";
+import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Student from "./features/Student";
 
 import DashboardLayout from './pages/StudentDashboardLayout';
 import Overview from './components/dashboard/StudentDashboard/Overview';
@@ -36,12 +34,10 @@ function App() {
   return (
     <BrowserRouter basename="/puneuniversity-ideabank">
       <Routes>
-        <Route path="/" element={authData ? <Navigate to="/dashboard-student" /> : <StudentLogin />} />
+        <Route path="/" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} />
         <Route path="/student-register" element={authData ? <Navigate to="/dashboard-student" /> : <Register />} />
         <Route path="/expert-register" element={authData ? <Navigate to="/dashboard-expert" /> : <Register />} />
-        <Route path="/student-login" element={authData ? <Navigate to="/dashboard-student" /> : <StudentLogin />} />
-        <Route path="/expert-login" element={authData ? <Navigate to="/dashboard-expert" /> : <ExpertLogin />} />
-        <Route path="/student" element={<Student />} />
+        <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} />
 
         {/* Protected Routes (PrivateRoute used here) */}
         <Route path="/dashboard-student" element={<PrivateRoute element={<DashboardLayout />} />}>

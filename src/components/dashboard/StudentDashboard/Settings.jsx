@@ -2,7 +2,6 @@ import { API_KEY } from '../../../config/apiConfig';
 import { useAuth } from "../../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-// import { UserContext } from "../../../context/UserContext";
 
 import FormField from "../../auth/FormField";
 import WhiteBox from "../../../ui/WhiteBox/WhiteBox";

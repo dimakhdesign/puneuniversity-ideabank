@@ -15,22 +15,22 @@ const SidebarRight = () => {
     const [studentData, setStudentData] = useState(null);
 
     const { authData } = useAuth();  // Get authData from context
-    const studentId = authData?.userId;
+    const userId = authData?.userId;
 
     // API Call to fetch the student data
     useEffect(() => {
-        if (!studentId) return;
+        if (!userId) return;
 
         const getStudentData = async () => {
             try {
-                const response = await fetch('/api/profileStudent.php', {
+                const response = await fetch('/api/profileUser.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         Authorization_key: API_KEY,
-                        student_id: studentId,
+                        AccessLevel: "Student"
                     }),
                 });
 
@@ -59,38 +59,38 @@ const SidebarRight = () => {
         };
 
         getStudentData();
-    }, [studentId]);  // Re-run the effect when studentId changes
+    }, [userId]);  // Re-run the effect when studentId changes
 
     // API Call to fetch the announcement
-    useEffect(() => {
+    // useEffect(() => {
 
-        const getAnnouncements = async () => {
-            try {
-                const response = await fetch('/api/getAnnouncement.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        Authorization_key: API_KEY,
-                        student_id: studentId,
-                    }),
-                });
+    //     const getAnnouncements = async () => {
+    //         try {
+    //             const response = await fetch('/api/getAnnouncement.php', {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                 },
+    //                 body: JSON.stringify({
+    //                     Authorization_key: API_KEY,
+    //                     student_id: studentId,
+    //                 }),
+    //             });
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
 
-                const result = await response.json();
-                // console.log(result);
+    //             const result = await response.json();
+    //             // console.log(result);
 
-            } catch (error) {
-                console.error('Get User error:', error);
-            }
-        };
+    //         } catch (error) {
+    //             console.error('Get User error:', error);
+    //         }
+    //     };
 
-        getAnnouncements();
-    }, [studentId]);  // Re-run the effect when studentId changes
+    //     getAnnouncements();
+    // }, [userId]);  // Re-run the effect when studentId changes
 
     return (
         <div>

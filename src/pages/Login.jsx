@@ -1,17 +1,17 @@
 import FormHeader from "../components/auth/FormHeader";
-import StudentLoginFormContent from "../components/auth/StudentLoginFormContent";
+import LoginFormContent from "../components/auth/Login/LoginFormContent";
 
 import "./Login.css";
 
-const StudentLogin = () => {
+const Login = () => {
   return (
     <>
       <FormHeader />
       <main className="form-main-wrapper flex justify-center pb-8">
-        <StudentLoginFormContent />
+        <LoginFormContent />
       </main>
     </>
   );
 };
 
-export default StudentLogin;
+export default Login;
