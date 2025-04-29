@@ -64,6 +64,11 @@ function App() {
           <Route path="settings" element={<AdminSettings />} />
         </Route>
 
+        <Route path="/dashboard-expert" element={<ExpertDashboardLayout />}>
+              <Route index element={<ExpertDashboard />}></Route>
+              <Route path="notification" element={<AdminNotifications/>}></Route>
+              <Route path="setting" element={<AdminSettings/>}></Route>
+            </Route>
         <Route path="*" element={<PageNotFound />}></Route>
 
       </Routes>

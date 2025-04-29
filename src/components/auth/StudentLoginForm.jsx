@@ -9,8 +9,6 @@
 // import { Link } from "react-router-dom";
 // import Button from "../../ui/Button/Button";
 
-
-
 // import {
 //   HiOutlineEnvelope,
 //   HiOutlineEye,
@@ -184,7 +182,6 @@
 // };
 
 // export default StudentLoginForm;
-
 
 // import { API_KEY } from '../../config/apiConfig';
 // import { useContext, useState } from "react";
@@ -383,8 +380,7 @@
 
 // export default StudentLoginForm;
 
-
-import { API_KEY } from '../../config/apiConfig';
+import { API_KEY } from "../../config/apiConfig";
 import { useState } from "react";
 import React from "react";
 import FormField from "./FormField";
@@ -443,8 +439,9 @@ const StudentLoginForm = () => {
         Authorization_key: API_KEY,
       };
 
-      // const response = await fetch("/api/loginStudent.php", {
-      const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs", {
+      const response = await fetch("/api/loginUser.php", {
+        // const response = await fetch("/api/loginStudent.php", {
+        // const response = await fetch("https://design3.dcpl.co.in/AyushCOsE/APIs", {
 
         method: "POST",
         headers: {
@@ -468,7 +465,7 @@ const StudentLoginForm = () => {
       const token = result.token;
       const user = result.field_array;
 
-      if (!token || !user?.id) {
+      if (!token || !user?.user_id) {
         setError("password", {
           type: "manual",
           message: "Authentication data missing. Please try again.",
@@ -477,10 +474,17 @@ const StudentLoginForm = () => {
         return;
       }
 
-      login(token, user.id); // ✅ send token and user id
+      login(token, user.user_id); // ✅ send token and user id
 
       reset();
-      navigate("/dashboard-student"); // ✅ Redirect to dashboard
+      if (user.AccessLevel === "Admin") {
+        navigate("/dashboard-admin");
+      }else if (user.AccessLevel === "Student") {
+        navigate("/dashboard-student");
+      }else if(user.AccessLevel === "Expert") {
+        navigate("/expert-login");
+      }
+      // navigate("/dashboard-student"); // ✅ Redirect to dashboard
     } catch (error) {
       console.error("Login error:", error);
       setError("password", {
@@ -560,7 +564,11 @@ const StudentLoginForm = () => {
       </div>
 
       <div className="form-group mt-[45px]">
-        <Button text={loading ? "Signing In..." : "Sign In"} type="submit" disabled={loading} />
+        <Button
+          text={loading ? "Signing In..." : "Sign In"}
+          type="submit"
+          disabled={loading}
+        />
       </div>
 
       <div className="text-center text-sm">
@@ -574,4 +582,3 @@ const StudentLoginForm = () => {
 };
 
 export default StudentLoginForm;
-
