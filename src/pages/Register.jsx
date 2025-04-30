@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import FormHeader from "../components/auth/FormHeader";
 import StudentRegistrationFormContent from "../components/auth/StudentRegistrationFormContent";
 import ExpertRegistrationFormContent from "../components/auth/ExpertRegistrationFormContent";
+import "./Login.css";
 
 const Register = () => {
   const location = useLocation();
@@ -11,8 +12,7 @@ const Register = () => {
 
   return (
     <>
-      <FormHeader />
-      <main className="form-main-wrapper flex justify-center pb-8">
+      <main className="form-main-wrapper flex justify-center items-center pb-8">
         {path.includes("/student-register") && (
           <StudentRegistrationFormContent />
         )}

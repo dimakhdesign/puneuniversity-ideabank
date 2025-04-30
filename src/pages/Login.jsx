@@ -6,8 +6,7 @@ import "./Login.css";
 const Login = () => {
   return (
     <>
-      <FormHeader />
-      <main className="form-main-wrapper flex justify-center pb-8">
+      <main className="form-main-wrapper flex justify-center items-center pb-8">
         <LoginFormContent />
       </main>
     </>

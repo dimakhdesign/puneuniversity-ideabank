@@ -3,34 +3,54 @@ import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
 
 import { API_KEY } from '../../../config/apiConfig';
 import { useAuth } from '../../../context/AuthContext';
-import { useForm } from 'react-hook-form';
 import { useEffect, useState } from "react";
 
-import { useNavigate } from 'react-router-dom';
 
 function StudentList() {
 
   const [studentData, setStudentData] = useState(null);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
   
       const { authData } = useAuth();
       const userId = authData?.userId;
-      // const navigate = useNavigate();
-  
-      // console.log(authData);
+      const authToken = API_KEY;
+      
+      
+      // console.log(authToken);
+      
+      useEffect(() => {
+        const requestBody = {
+          Authorization_key: authToken,
+          userId: userId,
+          AccessLevel: "Expert",
+        };
+        
+        
+        fetch('/api/GetAllSudent.php', {
+          method: "POST",
+          headers: {
+            "Authorization": `${authToken}`,
+            "Content-Type": "application/json",
+          }
+        })
+        .then(res => {
+          if (!res.ok) throw new Error("Failed to fetch");
+          return res.json();
+        })
+        .then(data => setData(data))
+        .catch(err => setError(err.message));
+        console.log(data);
+        
+      }, []);
   
 
   return (
     <div className="p-3">
       <WhiteBox>
         <div className="profile-summary">
-          <p>
-            Welcome to our platform, <br />{" "}
-            <strong>{userId}</strong> Here’s a quick overview of
-            what you can expect.{" "}
-          </p>
-          <div className="profile-cpmpletion-status flex gap-3 items-center mt-3">
-            <p>Your profile is 50% completed.</p>
-          </div>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
       </WhiteBox>
     </div>
