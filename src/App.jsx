@@ -33,6 +33,8 @@ import StudentList from "./components/dashboard/expert-dashboard/StudentList";
 function App() {
   const { authData } = useAuth();
 
+  console.log(authData)
+
   return (
     <BrowserRouter basename="/puneuniversity-ideabank">
       <Routes>
@@ -52,6 +54,12 @@ function App() {
                     : "/login"
                 }
               />
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
             ) : (
               <Login />
             )
@@ -73,6 +81,12 @@ function App() {
                     : "/login"
                 }
               />
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
             ) : (
               <Register />
             )
@@ -96,6 +110,12 @@ function App() {
                     : "/login"
                 }
               />
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
             ) : (
               <Register />
             )
@@ -104,6 +124,8 @@ function App() {
 
         {/* <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} />
          */}
+        {/* <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} /> 
+        */}
 
         <Route
           path="/login"
@@ -120,6 +142,12 @@ function App() {
                     : "/login"
                 }
               />
+              <Navigate to={
+                authData.accessLevel === 'Student' ? '/dashboard-student' :
+                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                      '/login'
+              } />
             ) : (
               <Login />
             )
