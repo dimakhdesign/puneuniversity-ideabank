@@ -2,8 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 import FormHeader from "../components/auth/FormHeader";
-import StudentRegistrationFormContent from "../components/auth/StudentRegistrationFormContent";
-import ExpertRegistrationFormContent from "../components/auth/ExpertRegistrationFormContent";
+import StudentRegistrationFormContent from "../components/auth/Registration/StudentRegistrationFormContent";
+import ExpertRegistrationFormContent from "../components/auth/Registration/ExpertRegistrationFormContent";
 
 const Register = () => {
   const location = useLocation();

@@ -11,7 +11,9 @@ const Settings = () => {
 
     const { authData } = useAuth();  // Get authData from context
 
-    const studentId = authData.userId;
+    const userId = authData?.userId;
+
+    const userPass = authData?.userPass;
 
     const [studentInfo, setStudentInfo] = useState({});
 
@@ -19,14 +21,16 @@ const Settings = () => {
         const getStudentData = async () => {
 
             try {
-                const res = await fetch("/api/profileStudent.php", {
+                // const res = await fetch("/api/profileUser.php", {
+                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        student_id: studentId,
+                        user_id: userId,
                         Authorization_key: API_KEY,
+                        AccessLevel: "Student"
                     }),
                 });
 
@@ -73,13 +77,14 @@ const Settings = () => {
     const onSubmitProfile = async (formData) => {
 
         try {
-            const res = await fetch("/api/UpdateStudentprofile.php", {
+            // const res = await fetch("/api/UpdateUserprofile.php", {
+            const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/UpdateUserprofile.php', {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                // headers: {
+                //     "Content-Type": "application/json",
+                // },
                 body: JSON.stringify({
-                    student_id: studentId,
+                    user_id: userId,
                     txt_name: formData.name,
                     txt_email: formData.email,
                     txt_college: formData.college_name,
@@ -87,6 +92,8 @@ const Settings = () => {
                     txt_type: formData.student_type,
                     txt_password: formData.confirmPassword,
                     Authorization_key: API_KEY,
+                    AccessLevel: "Student",
+                    updated_by: userId,
                 }),
             });
 
@@ -95,7 +102,7 @@ const Settings = () => {
             const result = await res.json();
             console.log("Profile updated", result);
 
-            reset({ password: "", confirmPassword: "" }); // Clear password fields
+            // reset({ password: "", confirmPassword: "" }); // Clear password fields
         } catch (error) {
             console.error("Error:", error);
         }
@@ -111,7 +118,7 @@ const Settings = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5 mb-5">
                         <div className="flex flex-col gap-2">
                             <label>Name</label>
-                            <FormField {...register("name", { required: true })} />
+                            <FormField {...register("name", { required: true })} disabled />
                             {errors.name && <span className="text-red-500">Required</span>}
                         </div>
                         <div className="flex flex-col gap-2">
@@ -120,19 +127,37 @@ const Settings = () => {
                         </div>
                         <div className="flex flex-col gap-2">
                             <label>College</label>
-                            <FormField {...register("college_name")} />
+                            <FormField {...register("college_name")} disabled />
                         </div>
                         <div className="flex flex-col gap-2">
                             <label>DOB</label>
-                            <FormField type="date" {...register("dob")} />
+                            <FormField type="date" {...register("dob")} disabled />
                         </div>
                         <div className="flex flex-col gap-2">
                             <label>Type</label>
-                            <FormField {...register("student_type")} />
+                            <FormField {...register("student_type")} disabled />
                         </div>
                     </div>
 
                     <p className="mb-3 font-bold">2. Security</p>
+
+                    {/* Old Password */}
+                    <div className="flex flex-col gap-2 mb-5">
+                        <label>Old Password</label>
+                        <FormField
+                            type="password"
+                            {...register("oldPassword", {
+                                required: "Old password is required",
+                                validate: (value) =>
+                                    value === userPass || "Old password does not match",
+                            })}
+                        />
+                        {errors.oldPassword && (
+                            <span className="text-red-500 text-xs">{errors.oldPassword.message}</span>
+                        )}
+                    </div>
+
+                    {/* New Password */}
                     <div className="flex flex-col gap-2 mb-5">
                         <label>Password</label>
                         <FormField

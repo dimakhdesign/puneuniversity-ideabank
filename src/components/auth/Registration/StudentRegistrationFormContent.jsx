@@ -1,5 +1,5 @@
 import StudentRegistrationForm from "./StudentRegistrationForm";
-import LoginImage from "../auth/Login/LoginImage";
+import LoginImage from "../Login/LoginImage";
 
 const RegistrationFormContent = () => {
   return (

@@ -32,14 +32,12 @@ const Overview = () => {
 
     const { authData } = useAuth();
     const userId = authData?.userId;
-    const navigate = useNavigate();
 
-    console.log(userId);
+    const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
-        setError,
         reset,
         formState: { errors },
     } = useForm();
@@ -50,7 +48,8 @@ const Overview = () => {
 
         const getStudentData = async () => {
             try {
-                const response = await fetch('/api/profileUser.php', {
+                // const response = await fetch('/api/profileUser.php', {
+                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
