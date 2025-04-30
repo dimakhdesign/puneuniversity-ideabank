@@ -47,11 +47,35 @@ function StudentList() {
   
 
   return (
-    <div className="p-3">
-      <WhiteBox>
-        <div className="profile-summary">
+    <div className="p-3 flex gap-3">
+      {/* <WhiteBox>
+        <div className="profile-summary mb-4">
           <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
+      </WhiteBox> */}
+      <WhiteBox className="mb-3">
+        <ul className="profile-summary mb-4">
+          <li>Name of Student : <strong>Rajesh Shinde</strong></li>
+          <li>Email ID : rajesh@gmail.com</li>
+          <li>Mobile No : 9852145786</li>
+        </ul>
+        <a className="btn btn-primary" href="mailto:rajesh@gmail.com">Contact Via Email</a>
+      </WhiteBox>
+      <WhiteBox className="mb-3">
+        <ul className="profile-summary mb-4">
+          <li>Name of Student : <strong>Yogesh Patil</strong></li>
+          <li>Email ID : yogesh@gmail.com</li>
+          <li>Mobile No : 658745145</li>
+        </ul>
+        <a className="btn btn-primary" href="mailto:yogesh@gmail.com">Contact Via Email</a>
+      </WhiteBox>
+      <WhiteBox className="mb-3">
+        <ul className="profile-summary mb-4">
+          <li>Name of Student : <strong>Vjay Sawant</strong> </li>
+          <li>Email ID : Vijay@gmail.com</li>
+          <li>Mobile No : 5478569851</li>
+        </ul>
+        <a className="btn btn-primary" href="mailto:Vijay@gmail.com">Contact Via Email</a>
       </WhiteBox>
     </div>
   );
