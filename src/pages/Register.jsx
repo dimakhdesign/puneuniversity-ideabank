@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-
-import FormHeader from "../components/auth/FormHeader";
 import StudentRegistrationFormContent from "../components/auth/StudentRegistrationFormContent";
 import ExpertRegistrationFormContent from "../components/auth/ExpertRegistrationFormContent";
-import "./Login.css";
+import "../pages/Login/login.css";
+import StudentRegistrationFormContent from "../components/auth/Registration/StudentRegistrationFormContent";
+import ExpertRegistrationFormContent from "../components/auth/Registration/ExpertRegistrationFormContent";
 
 const Register = () => {
   const location = useLocation();

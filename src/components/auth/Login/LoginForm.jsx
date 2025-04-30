@@ -1,4 +1,4 @@
-import { API_KEY } from '../../../config/apiConfig';
+import { API_KEY, BASE_URL } from '../../../config/apiConfig';
 import { useState } from "react";
 import React from "react";
 import FormField from "../FormField";
@@ -57,7 +57,8 @@ const LoginForm = () => {
         Authorization_key: API_KEY,
       };
 
-      const response = await fetch("/api/loginUser.php", {
+      const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs/loginUser.php", {
+        // const response = await fetch("/api/loginUser.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +92,7 @@ const LoginForm = () => {
         return;
       }
 
-      login(token, user.user_id, user.AccessLevel); // ✅ send token and user id
+      login(token, user.user_id, user.password, user.AccessLevel); // ✅ send token and user id
 
       reset();
 

@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 
-// Import your components
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 import DashboardLayout from "./pages/StudentDashboardLayout";
 import Overview from "./components/dashboard/StudentDashboard/Overview";
@@ -22,18 +23,13 @@ import AdminNotifications from "./components/dashboard/AdminDashboard/AdminNotif
 import DocumentsRepository from "./components/dashboard/AdminDashboard/DocumentsRepository";
 import AdminSettings from "./components/dashboard/AdminDashboard/AdminSettings";
 
-import PageNotFound from "./ui/PageNotFound/PageNotFound";
-
-// Import PrivateRoute
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ExpertDashboardLayout from "./pages/ExpertDashboardLayout";
-import ExpertDashboard from "./components/dashboard/expert-dashboard/ExpertDashboard";
 import StudentList from "./components/dashboard/expert-dashboard/StudentList";
+
+import PageNotFound from "./ui/PageNotFound/PageNotFound";
 
 function App() {
   const { authData } = useAuth();
-
-  console.log(authData)
 
   return (
     <BrowserRouter basename="/puneuniversity-ideabank">

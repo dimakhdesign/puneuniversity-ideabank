@@ -23,13 +23,15 @@ const SidebarRight = () => {
 
         const getStudentData = async () => {
             try {
-                const response = await fetch('/api/profileUser.php', {
+                // const response = await fetch('/api/profileUser.php', {
+                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         Authorization_key: API_KEY,
+                        user_id: userId,
                         AccessLevel: "Student"
                     }),
                 });
@@ -39,7 +41,6 @@ const SidebarRight = () => {
                 }
 
                 const result = await response.json();
-                // console.log(result);
 
                 // Check if the response contains the 'field_array'
                 if (result.Response && result.field_array) {
@@ -98,7 +99,13 @@ const SidebarRight = () => {
                 <InfoWithIcon
                     icon={IconProfessor}
                     title="Assigned Professor Details"
-                    subtitle={studentData ? studentData.expert_name : "Loading..."}
+                    subtitle={
+                        studentData
+                            ? studentData.expert_name
+                                ? studentData.expert_name
+                                : "Expert not assigned yet"
+                            : "Loading..."
+                    }
                 />
             </WhiteBox>
 
