@@ -43,23 +43,17 @@ function App() {
           path="/"
           element={
             authData ? (
-              <Navigate
-                to={
-                  authData.accessLevel === "Student"
-                    ? "/dashboard-student"
-                    : authData.accessLevel === "Expert"
+              <><Navigate
+                to={authData.accessLevel === "Student"
+                  ? "/dashboard-student"
+                  : authData.accessLevel === "Expert"
                     ? "/dashboard-expert"
                     : authData.accessLevel === "Admin"
-                    ? "/dashboard-admin"
-                    : "/login"
-                }
-              />
-              <Navigate to={
-                authData.accessLevel === 'Student' ? '/dashboard-student' :
-                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                      '/login'
-              } />
+                      ? "/dashboard-admin"
+                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
+                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                            '/login'} /></>
             ) : (
               <Login />
             )
@@ -70,23 +64,17 @@ function App() {
           path="/student-register"
           element={
             authData ? (
-              <Navigate
-                to={
-                  authData.accessLevel === "Student"
-                    ? "/dashboard-student"
-                    : authData.accessLevel === "Expert"
+              <><Navigate
+                to={authData.accessLevel === "Student"
+                  ? "/dashboard-student"
+                  : authData.accessLevel === "Expert"
                     ? "/dashboard-expert"
                     : authData.accessLevel === "Admin"
-                    ? "/dashboard-admin"
-                    : "/login"
-                }
-              />
-              <Navigate to={
-                authData.accessLevel === 'Student' ? '/dashboard-student' :
-                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                      '/login'
-              } />
+                      ? "/dashboard-admin"
+                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
+                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                            '/login'} /></>
             ) : (
               <Register />
             )
@@ -99,23 +87,17 @@ function App() {
           path="/expert-register"
           element={
             authData ? (
-              <Navigate
-                to={
-                  authData.accessLevel === "Student"
-                    ? "/dashboard-student"
-                    : authData.accessLevel === "Expert"
+              <><Navigate
+                to={authData.accessLevel === "Student"
+                  ? "/dashboard-student"
+                  : authData.accessLevel === "Expert"
                     ? "/dashboard-expert"
                     : authData.accessLevel === "Admin"
-                    ? "/dashboard-admin"
-                    : "/login"
-                }
-              />
-              <Navigate to={
-                authData.accessLevel === 'Student' ? '/dashboard-student' :
-                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                      '/login'
-              } />
+                      ? "/dashboard-admin"
+                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
+                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                            '/login'} /></>
             ) : (
               <Register />
             )
@@ -131,23 +113,17 @@ function App() {
           path="/login"
           element={
             authData ? (
-              <Navigate
-                to={
-                  authData.accessLevel === "Student"
-                    ? "/dashboard-student"
-                    : authData.accessLevel === "Expert"
+              <><Navigate
+                to={authData.accessLevel === "Student"
+                  ? "/dashboard-student"
+                  : authData.accessLevel === "Expert"
                     ? "/dashboard-expert"
                     : authData.accessLevel === "Admin"
-                    ? "/dashboard-admin"
-                    : "/login"
-                }
-              />
-              <Navigate to={
-                authData.accessLevel === 'Student' ? '/dashboard-student' :
-                  authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                    authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                      '/login'
-              } />
+                      ? "/dashboard-admin"
+                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
+                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
+                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
+                            '/login'} /></>
             ) : (
               <Login />
             )
