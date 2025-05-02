@@ -99,14 +99,10 @@
 .form-card {
     color: white;
 }
-<<<<<<< HEAD
- input[type="text"],select,input[type="date"],input {
-=======
 
 .registration input,
 .registration select,
 .login input {
->>>>>>> 7feda68569d8af4df5001b71ed95a589157e9e1d
     border: 0;
     border-radius: 0;
     border-bottom: 1px solid white;

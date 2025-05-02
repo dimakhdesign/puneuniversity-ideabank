@@ -1,10 +1,7 @@
 import StudentRegistrationForm from "./StudentRegistrationForm";
-import LoginImage from "../../auth/Login/LoginImage";
-import "../../../pages/login.css";
-import Logo from "../../../ui/Logo/Logo";
 import LoginImage from "../Login/LoginImage";
 import Logo from "../../../ui/Logo/Logo";
-import "../../../pages/Login.css";
+import "../../../pages/login.css";
 const RegistrationFormContent = () => {
   return (
     <div className="main-inner-wrapper flex items-center justify-center">

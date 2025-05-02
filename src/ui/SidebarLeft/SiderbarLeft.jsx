@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Logo from "../Logo/Logo";
 import { NavLink } from 'react-router-dom';
-import { HiOutlineBars3 } from "react-icons/hi2";
+import { MdFormatIndentDecrease, MdFormatIndentIncrease } from "react-icons/md";
 import './SiderbarLeft.css';
 
 const SiderbarLeft = ({ menuItems }) => {
@@ -19,7 +19,11 @@ const SiderbarLeft = ({ menuItems }) => {
                     <div className="name">University Of Pune<br /><span>IDEA BANK</span></div>
                 </div>
                 <div className="toggler cursor-pointer" onClick={handleToggleClick}>
-                    <HiOutlineBars3 className="text-xl" />
+                    {isOpen ? (
+                        <MdFormatIndentDecrease className="text-xl" />
+                    ) : (
+                        <MdFormatIndentIncrease className="text-xl" />
+                    )}
                 </div>
             </div>
             <ul className="sidebar-menu">

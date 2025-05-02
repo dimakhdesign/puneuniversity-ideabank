@@ -11,3 +11,9 @@ input[type="text"],
 input[type="date"] {
     color: #4F4F4F;
 }
+
+input,
+select,
+textarea {
+    box-shadow: 0 0 5px #dfdfdfa8;
+}

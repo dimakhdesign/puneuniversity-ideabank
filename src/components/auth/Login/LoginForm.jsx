@@ -8,10 +8,8 @@ import { useAuth } from "../../../context/AuthContext";
 import Button from "../../../ui/Button/Button";
 
 import {
-  HiOutlineEnvelope,
   HiOutlineEye,
   HiOutlineEyeSlash,
-  HiOutlineExclamationCircle,
 } from "react-icons/hi2";
 
 import "../Form.css";
@@ -57,8 +55,8 @@ const LoginForm = () => {
         Authorization_key: API_KEY,
       };
 
-      const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs/loginUser.php", {
-        // const response = await fetch("/api/loginUser.php", {
+      // const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs/loginUser.php", {
+      const response = await fetch("/api/loginUser.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -127,9 +125,6 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          {/* <span className="absolute right-2 top-2">
-            <HiOutlineEnvelope />
-          </span> */}
         </div>
         {errors.email && (
           <p className="text-red-600 text-xs">{errors.email.message}</p>
@@ -170,9 +165,6 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.spamCode ? "true" : "false"}
           />
-          {/* <span className="absolute right-2 top-2 text-gray-600">
-            <HiOutlineExclamationCircle />
-          </span> */}
           <p className="mt-4 text-sm">
             What is {spamCheck.num1} + {spamCheck.num2}?
           </p>

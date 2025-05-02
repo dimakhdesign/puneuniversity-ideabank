@@ -27,8 +27,8 @@ const ResearchSubmit = () => {
 
         const submitResearch = async () => {
             try {
-                // const response = await fetch('/api/submitResearch.php', {
-                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/submitResearch.php', {
+                const response = await fetch('/api/submitResearch.php', {
+                    // const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/submitResearch.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

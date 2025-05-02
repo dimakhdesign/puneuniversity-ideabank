@@ -7,6 +7,8 @@ import FormField from "../../auth/FormField";
 import WhiteBox from "../../../ui/WhiteBox/WhiteBox";
 import Button from "../../../ui/Button/Button";
 
+import toast, { Toaster } from "react-hot-toast";
+
 const Settings = () => {
 
     const { authData } = useAuth();  // Get authData from context
@@ -21,8 +23,8 @@ const Settings = () => {
         const getStudentData = async () => {
 
             try {
-                // const response = await fetch("/api/profileUser.php", {
-                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
+                const response = await fetch("/api/profileUser.php", {
+                    // const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -77,12 +79,12 @@ const Settings = () => {
     const onSubmitProfile = async (formData) => {
 
         try {
-            // const res = await fetch("/api/UpdateUserprofile.php", {
-            const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/UpdateUserprofile.php', {
+            const res = await fetch("/api/UpdateUserprofile.php", {
+                // const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/UpdateUserprofile.php', {
                 method: "POST",
-                // headers: {
-                //     "Content-Type": "application/json",
-                // },
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify({
                     user_id: userId,
                     txt_name: formData.name,
@@ -102,9 +104,19 @@ const Settings = () => {
             const result = await res.json();
             console.log("Profile updated", result);
 
-            // reset({ password: "", confirmPassword: "" }); // Clear password fields
+            // Reset only the password fields
+            reset({
+                oldPassword: "",
+                password: "",
+                confirmPassword: "",
+            }, { keepValues: true });  // This ensures other fields are not reset.
+
+            // Show success toast notification
+            toast.success("Password updated successfully!");
+
         } catch (error) {
             console.error("Error:", error);
+            toast.error("Error updating profile. Please try again.");
         }
     };
 
@@ -142,7 +154,7 @@ const Settings = () => {
                     <p className="mb-3 font-bold">2. Security</p>
 
                     {/* Old Password */}
-                    <div className="flex flex-col gap-2 mb-5">
+                    <div className="form-group flex flex-col gap-2 mb-5">
                         <label>Old Password</label>
                         <FormField
                             type="password"
@@ -153,41 +165,60 @@ const Settings = () => {
                             })}
                         />
                         {errors.oldPassword && (
-                            <span className="text-red-500 text-xs">{errors.oldPassword.message}</span>
+                            <p className="text-red-500 text-xs">{errors.oldPassword.message}</p>
                         )}
                     </div>
 
                     {/* New Password */}
-                    <div className="flex flex-col gap-2 mb-5">
+                    <div className="form-group flex flex-col gap-2 mb-5">
                         <label>Password</label>
                         <FormField
                             type="password"
-                            {...register("password", { required: true })}
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: {
+                                    value: 6,
+                                    message: "Password must be at least 6 characters",
+                                },
+                                maxLength: {
+                                    value: 20,
+                                    message: "Password cannot exceed 20 characters",
+                                },
+                                pattern: {
+                                    value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/,
+                                    message: "Password must contain at least one uppercase letter, one number, and one special character",
+                                },
+                            })}
                         />
                         {errors.password && (
-                            <span className="text-red-500 text-xs">Password is required</span>
+                            <p className="text-red-500 text-xs">
+                                {errors.password.message}
+                            </p>
                         )}
                     </div>
-                    <div className="flex flex-col gap-2 mb-5">
+
+                    <div className="form-group flex flex-col gap-2 mb-5">
                         <label>Confirm Password</label>
                         <FormField
                             type="password"
                             {...register("confirmPassword", {
-                                required: true,
+                                required: "Please confirm your Password",
                                 validate: (value) =>
                                     value === watch("password") || "Passwords do not match",
                             })}
                         />
                         {errors.confirmPassword && (
-                            <span className="text-red-500 text-xs">
+                            <p className="text-red-500 text-xs">
                                 {errors.confirmPassword.message}
-                            </span>
+                            </p>
                         )}
                     </div>
 
                     <Button text="Update Details" type="submit" className="!w-max" />
                 </form>
             </WhiteBox>
+
+            <Toaster />
         </>
     );
 };
