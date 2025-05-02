@@ -15,7 +15,7 @@ const RegistrationFormContent = () => {
             Welcome to <br /> <span>Student portal</span>
           </h1>
           <p>
-            "Welcome to the AYUSH Idea Bank! Submit your innovative ideas,
+            "Welcome to the ayahs Idea Bank! Submit your innovative ideas,
             collaborate with mentors, and track your progress in integrative
             medicine and science."
           </p>
