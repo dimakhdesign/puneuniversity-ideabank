@@ -89,7 +89,7 @@
 .form-card {
     color: white;
 }
- input[type="text"],select,input[type="date"] {
+ input[type="text"],select,input[type="date"],input {
     border: 0;
     border-radius: 0;
     border-bottom: 1px solid white;

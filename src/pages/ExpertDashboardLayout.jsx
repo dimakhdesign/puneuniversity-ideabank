@@ -11,8 +11,8 @@ import IconSettings from '../assets/icon-settings.svg';
 const menuItems = [
   { name: "Expert Dashboard", icon: IconSubmit, link: "" },
   { name: "Notification", icon: IconNotification, link: "notification" },
-  { name: "Setting & Profile", icon: IconSettings, link: "setting" },
-  { name: "Log Out", icon: IconSettings, link: "setting" },
+  { name: "Setting & Profile", icon: IconSettings, link: "expert-setting" },
+  // { name: "Log Out", icon: IconSettings, link: "setting" },
 ];
 
 
