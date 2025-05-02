@@ -57,8 +57,8 @@ const LoginForm = () => {
         Authorization_key: API_KEY,
       };
 
-      const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs/loginUser.php", {
-        // const response = await fetch("/api/loginUser.php", {
+      // const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs/loginUser.php", {
+        const response = await fetch("/api/loginUser.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -188,7 +188,7 @@ const LoginForm = () => {
 
       <div className="text-center text-sm">
         Not a member yet?{" "}
-        <Link to="/student-register" className="text-blue-700">
+        <Link to="/student-register" className="text-white-700 underline ">
           Register Now
         </Link>
       </div>

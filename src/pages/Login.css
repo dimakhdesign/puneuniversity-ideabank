@@ -48,7 +48,7 @@
     border: 0;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
-    box-shadow: 0px 5px 25px 0 #350B8CCC;
+    box-shadow: 0px 5px 25px 0 #2d097c47;
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
@@ -93,25 +93,21 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     padding: 3rem;
-    box-shadow: 5px 0px 25px 0 #350B8CCC;
+    box-shadow: 5px 0px 25px 0 #2d097c47;
 }
 
 .form-card {
     color: white;
 }
-<<<<<<< HEAD
- input[type="text"],select,input[type="date"],input {
-=======
-
 .registration input,
 .registration select,
 .login input {
->>>>>>> 7feda68569d8af4df5001b71ed95a589157e9e1d
     border: 0;
     border-radius: 0;
     border-bottom: 1px solid white;
     color: white !important;
 }
+ 
 
 .registration option {
     color: #4f4f4f;

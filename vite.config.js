@@ -6,13 +6,13 @@ export default defineConfig({
   base: '/puneuniversity-ideabank/',
   plugins: [react(), tailwindcss()],
 
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'https://design3.dcpl.co.in/AyushCOE/APIs',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/api/, ''),
-  //     },
-  //   },
-  // },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'https://design3.dcpl.co.in/AyushCOE/APIs',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
+    },
 });

@@ -1,0 +1,9 @@
+.student-data-list {
+    position: relative;
+}
+.student-data-list .btn-primary {
+    width: 10rem;
+    position: absolute;
+    right: 3%;
+    bottom: 30%;
+}

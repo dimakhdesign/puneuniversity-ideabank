@@ -23,7 +23,7 @@ const ExpertRegistrationFormContent = () => {
       <div className="form-wrapper w-96 bg-white rounded-md">
         <div className="form-card">
           <div className="header">
-            <h2>Login</h2>
+            <h2>Registration</h2>
           </div>
           <ExpertRegistrationForm />
         </div>

@@ -2,12 +2,10 @@ import StudentRegistrationForm from "./StudentRegistrationForm";
 import LoginImage from "../../auth/Login/LoginImage";
 import "../../../pages/login.css";
 import Logo from "../../../ui/Logo/Logo";
-import LoginImage from "../Login/LoginImage";
-import Logo from "../../../ui/Logo/Logo";
 import "../../../pages/Login.css";
 const RegistrationFormContent = () => {
   return (
-    <div className="main-inner-wrapper flex items-center justify-center">
+    <div className="main-inner-wrapper flex items-center justify-center registration">
       <div className="imageSection">
         <div className="imgCard">
           <Logo />
@@ -25,7 +23,7 @@ const RegistrationFormContent = () => {
       <div className="form-wrapper w-96 bg-white rounded-md">
         <div className="form-card">
           <div className="header">
-            <h2>Login</h2>
+            <h2>Registration</h2>
           </div>
           <StudentRegistrationForm />
         </div>

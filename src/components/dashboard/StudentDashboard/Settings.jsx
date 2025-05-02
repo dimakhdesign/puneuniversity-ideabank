@@ -21,8 +21,8 @@ const Settings = () => {
         const getStudentData = async () => {
 
             try {
-                // const response = await fetch("/api/profileUser.php", {
-                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
+                const response = await fetch("/api/profileUser.php", {
+                // const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

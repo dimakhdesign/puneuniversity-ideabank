@@ -24,9 +24,11 @@ import DocumentsRepository from "./components/dashboard/AdminDashboard/Documents
 import AdminSettings from "./components/dashboard/AdminDashboard/AdminSettings";
 
 import ExpertDashboardLayout from "./pages/ExpertDashboardLayout";
-import StudentList from "./components/dashboard/expert-dashboard/StudentList";
+import StudentList from "./components/dashboard/expert-dashboard/Overview";
 
 import PageNotFound from "./ui/PageNotFound/PageNotFound";
+import ExpertSetting from "./components/dashboard/expert-dashboard/ExpertSetting";
+import ExpertNotification from "./components/dashboard/expert-dashboard/ExpertNotification";
 
 function App() {
   const { authData } = useAuth();
@@ -157,6 +159,8 @@ function App() {
         </Route>
         <Route path="/dashboard-expert" element={<ExpertDashboardLayout />}>
           <Route index element={<StudentList />}></Route>
+          <Route path="expert-notification" element={<ExpertNotification/>}></Route>
+          <Route path="expert-setting" element={<ExpertSetting/>}></Route>
         </Route>
 
         <Route path="*" element={<PageNotFound />}></Route>
