@@ -1,4 +1,4 @@
-import { API_KEY } from '../../../config/apiConfig';
+import { API_KEY, BASE_URL } from '../../../config/apiConfig';
 import { useState } from "react";
 import React from "react";
 import FormField from "../FormField";
@@ -57,7 +57,8 @@ const LoginForm = () => {
         Authorization_key: API_KEY,
       };
 
-      const response = await fetch("/api/loginUser.php", {
+      const response = await fetch("https://design3.dcpl.co.in/AyushCOE/APIs/loginUser.php", {
+        // const response = await fetch("/api/loginUser.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +92,7 @@ const LoginForm = () => {
         return;
       }
 
-      login(token, user.user_id, user.AccessLevel); // ✅ send token and user id
+      login(token, user.user_id, user.password, user.AccessLevel); // ✅ send token and user id
 
       reset();
 
@@ -126,9 +127,9 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlineEnvelope />
-          </span>
+          </span> */}
         </div>
         {errors.email && (
           <p className="text-red-600 text-xs">{errors.email.message}</p>
@@ -169,9 +170,9 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.spamCode ? "true" : "false"}
           />
-          <span className="absolute right-2 top-2 text-gray-600">
+          {/* <span className="absolute right-2 top-2 text-gray-600">
             <HiOutlineExclamationCircle />
-          </span>
+          </span> */}
           <p className="mt-4 text-sm">
             What is {spamCheck.num1} + {spamCheck.num2}?
           </p>

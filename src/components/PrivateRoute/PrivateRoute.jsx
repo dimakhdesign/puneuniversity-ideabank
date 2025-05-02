@@ -6,7 +6,7 @@ const PrivateRoute = ({ element }) => {
 
     // If the user is not authenticated, redirect to login page
     if (!authData) {
-        return <Navigate to="/student-login" replace />;
+        return <Navigate to="/login" replace />;
     }
 
     return element;

@@ -17,6 +17,7 @@ const ResearchSubmit = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -26,7 +27,8 @@ const ResearchSubmit = () => {
 
         const submitResearch = async () => {
             try {
-                const response = await fetch('/api/submitResearch.php', {
+                // const response = await fetch('/api/submitResearch.php', {
+                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/submitResearch.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -45,10 +47,14 @@ const ResearchSubmit = () => {
 
                 const result = await response.json();
 
+                // console.log(result);
+
                 if (result.msg === "research idea already submited") {
                     setIsResearchSubmitted(true);
                 }
-                console.log(result);
+
+                reset();
+
 
             } catch (error) {
                 console.error('Get User error:', error);

@@ -20,7 +20,8 @@ const Purple = () => {
 
         const getResearchProgress = async () => {
             try {
-                const response = await fetch('/api/getResearchProgress.php', {
+                // const response = await fetch('/api/getResearchProgress.php', {
+                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/getResearchProgress.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -60,9 +61,9 @@ const Purple = () => {
             <div className="body flex flex-col">
                 <label className="flex justify-between">
                     <span>Progress</span>
-                    <span>{studentProgress}%</span>
+                    <span>{studentProgress ? studentProgress : "0"}%</span>
                 </label>
-                <ProgressBar value={studentProgress} />
+                <ProgressBar value={studentProgress ?? "0"} />
             </div>
         </div>
     )
