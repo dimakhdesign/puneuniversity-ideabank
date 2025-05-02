@@ -28,16 +28,19 @@
     line-height: normal;
     margin: 1.2rem 0;
 }
+
 .main-inner-wrapper {
     width: 100%;
     height: 100vh;
 }
+
 .imageSection {
     width: 60%;
     background: var(--color-white);
     display: flex;
     justify-content: end;
 }
+
 .imgCard {
     width: 70%;
     height: 35rem;
@@ -51,9 +54,11 @@
     flex-direction: column;
     gap: 1rem;
 }
+
 .imgCard img {
     margin: auto;
 }
+
 .imgCard h1 {
     font-weight: 600;
     font-size: 36px;
@@ -61,14 +66,17 @@
     letter-spacing: 0;
     color: #212121;
 }
+
 .imgCard h1 span {
     font-weight: 300;
     letter-spacing: -1;
 }
+
 .imgCard p {
     font-size: 14px;
     color: #4B5565;
 }
+
 .form-wrapper {
     width: 40%;
     height: 100%;
@@ -77,6 +85,7 @@
     align-items: center;
     justify-content: start;
 }
+
 .form-card {
     height: 35rem;
     width: 70%;
@@ -84,26 +93,39 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     padding: 3rem;
-    box-shadow: 5px 0px 25px 0 #350B8CCC;   
+    box-shadow: 5px 0px 25px 0 #350B8CCC;
 }
+
 .form-card {
     color: white;
 }
+<<<<<<< HEAD
  input[type="text"],select,input[type="date"],input {
+=======
+
+.registration input,
+.registration select,
+.login input {
+>>>>>>> 7feda68569d8af4df5001b71ed95a589157e9e1d
     border: 0;
     border-radius: 0;
     border-bottom: 1px solid white;
-    color: white;
+    color: white !important;
 }
- input::placeholder {
+
+.registration option {
+    color: #4f4f4f;
+}
+
+input::placeholder {
     outline: 0;
     color: white;
 }
-.btn-primary {
+
+.registration .btn-primary,
+.login .btn-primary {
     background: white;
     color: var(--color-purple-dark);
 }
 
-@media screen and (max-width:480px) {
-    
-}
+@media screen and (max-width:480px) {}

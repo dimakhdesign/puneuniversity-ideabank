@@ -10,7 +10,11 @@ const Register = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <main className="form-main-wrapper flex justify-center items-center">
+=======
+      <main className="form-main-wrapper flex justify-center items-center registration">
+>>>>>>> 7feda68569d8af4df5001b71ed95a589157e9e1d
         {path.includes("/student-register") && (
           <StudentRegistrationFormContent />
         )}
