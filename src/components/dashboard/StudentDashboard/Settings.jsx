@@ -21,7 +21,7 @@ const Settings = () => {
         const getStudentData = async () => {
 
             try {
-                // const res = await fetch("/api/profileUser.php", {
+                // const response = await fetch("/api/profileUser.php", {
                 const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/profileUser.php', {
                     method: "POST",
                     headers: {
@@ -34,9 +34,9 @@ const Settings = () => {
                     }),
                 });
 
-                if (!res.ok) throw new Error("Failed to display details.");
+                if (!response.ok) throw new Error("Failed to display details.");
 
-                const result = await res.json();
+                const result = await response.json();
                 // console.log("Details fetched", result);
                 setStudentInfo(result.field_array)
 

@@ -100,9 +100,9 @@ const StudentRegistrationForm = () => {
             aria-invalid={errors.name ? "true" : "false"}
             className="border p-2"
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlineUserCircle />
-          </span>
+          </span> */}
         </div>
         {errors.name && <p className="text-red-600 text-xs">{errors.name.message}</p>}
       </div>
@@ -121,9 +121,9 @@ const StudentRegistrationForm = () => {
             })}
             aria-invalid={errors.collegename ? "true" : "false"}
           />
-          <span>
+          {/* <span>
             <HiOutlineBuildingLibrary />
-          </span>
+          </span> */}
         </div>
         {errors.collegename && <p className="text-red-600 text-xs">{errors.collegename.message}</p>}
       </div>
@@ -175,9 +175,9 @@ const StudentRegistrationForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          <span>
+          {/* <span>
             <HiOutlineEnvelope />
-          </span>
+          </span> */}
         </div>
         {errors.email && <p className="text-red-600 text-xs">{errors.email.message}</p>}
       </div>
@@ -187,7 +187,6 @@ const StudentRegistrationForm = () => {
           <FormField
             type="date"
             placeholder="DOB"
-            className="pe-[12px]"
             {...register("dob", { required: true })}
             aria-invalid={errors.dob ? "true" : "false"}
           />
@@ -209,9 +208,9 @@ const StudentRegistrationForm = () => {
             {...register("role", { required: true })}
             aria-invalid={errors.role ? "true" : "false"}
           />
-          <span>
+          {/* <span>
             <HiOutlineAcademicCap />
-          </span>
+          </span> */}
         </div>
         {errors.role?.type === "required" && <p className="text-red-600 text-xs">Please select Student Type</p>}
       </div>

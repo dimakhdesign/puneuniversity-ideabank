@@ -127,9 +127,9 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlineEnvelope />
-          </span>
+          </span> */}
         </div>
         {errors.email && (
           <p className="text-red-600 text-xs">{errors.email.message}</p>
@@ -170,9 +170,9 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.spamCode ? "true" : "false"}
           />
-          <span className="absolute right-2 top-2 text-gray-600">
+          {/* <span className="absolute right-2 top-2 text-gray-600">
             <HiOutlineExclamationCircle />
-          </span>
+          </span> */}
           <p className="mt-4 text-sm">
             What is {spamCheck.num1} + {spamCheck.num2}?
           </p>

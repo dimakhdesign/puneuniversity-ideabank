@@ -96,9 +96,9 @@ const ExpertRegistrationForm = () => {
             aria-invalid={errors.firstName ? "true" : "false"}
             className="border p-2"
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlineUserCircle />
-          </span>
+          </span> */}
         </div>
         {errors.firstName && (
           <p className="text-red-600 text-xs">{errors.firstName.message}</p>
@@ -120,9 +120,9 @@ const ExpertRegistrationForm = () => {
             aria-invalid={errors.lastName ? "true" : "false"}
             className="border p-2"
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlineUserCircle />
-          </span>
+          </span> */}
         </div>
         {errors.lastName && (
           <p className="text-red-600 text-xs">{errors.lastName.message}</p>
@@ -147,9 +147,9 @@ const ExpertRegistrationForm = () => {
             })}
             aria-invalid={errors.phone ? "true" : "false"}
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlinePhone />
-          </span>
+          </span> */}
         </div>
         {errors.phone && (
           <p className="text-red-600 text-xs">{errors.phone.message}</p>
@@ -170,9 +170,9 @@ const ExpertRegistrationForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          <span className="absolute right-2 top-2">
+          {/* <span className="absolute right-2 top-2">
             <HiOutlineEnvelope />
-          </span>
+          </span> */}
         </div>
         {errors.email && (
           <p className="text-red-600 text-xs">{errors.email.message}</p>
