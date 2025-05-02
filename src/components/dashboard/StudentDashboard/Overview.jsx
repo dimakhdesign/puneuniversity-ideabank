@@ -16,14 +16,14 @@ import FormField from '../../auth/FormField';
 import './Overview.css';
 
 const faqItems = [
-    {
-        title: "Can you tell me how to ask questions on this platform?",
-        content: "To ask questions on this platform, simply type your query in the designated input area and hit 'Enter' or click the 'Submit' button. Make sure your question is clear and concise for the best responses!",
-    },
-    {
-        title: "Can you tell me how to ask questions on this platform?",
-        content: "To ask questions on this platform, simply type your query in the designated input area and hit 'Enter' or click the 'Submit' button. Make sure your question is clear and concise for the best responses!",
-    },
+    // {
+    //     title: "Can you tell me how to ask questions on this platform?",
+    //     content: "To ask questions on this platform, simply type your query in the designated input area and hit 'Enter' or click the 'Submit' button. Make sure your question is clear and concise for the best responses!",
+    // },
+    // {
+    //     title: "Can you tell me how to ask questions on this platform?",
+    //     content: "To ask questions on this platform, simply type your query in the designated input area and hit 'Enter' or click the 'Submit' button. Make sure your question is clear and concise for the best responses!",
+    // },
 ];
 
 const Overview = () => {
@@ -165,10 +165,13 @@ const Overview = () => {
                         <h2 className="section-heading">Q&A Discussions</h2>
                         <ButtonSecondary text="Ask new Question" onClick={() => setShowModal(true)} />
                     </div>
-                    <div className="accordion-wrapper border-t-1 border-gray-200 mt-4">
-                        <AccordionGroup items={faqItems} />
-                        <Link text="View All" className="mt-3" onClick={handleViewAllClick} />
-                    </div>
+                    {faqItems.length >= 1 ? (
+                        <div className="accordion-wrapper border-t-1 border-gray-200 mt-4">
+                            <AccordionGroup items={faqItems} />
+                            <Link text="View All" className="mt-3" onClick={handleViewAllClick} />
+                        </div>) : <p className='mt-5'>Q&A discussions will appear here once they begin.</p>
+                    }
+
                 </WhiteBox>
             </div>
 

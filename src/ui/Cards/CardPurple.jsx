@@ -37,6 +37,7 @@ const Purple = () => {
                 }
 
                 const result = await response.json();
+                console.log(result);
                 setStudentProgress(result.field_array.percentage)
             } catch (error) {
                 console.error('Get User error:', error);

@@ -14,6 +14,11 @@ import {
 
 import "../Form.css";
 
+const adminInfo = {
+  username: 'admin',
+  password: 'admin@123',
+}
+
 const LoginForm = () => {
   const { login } = useAuth(); // ✅ token login function
   const [spamCheck, setSpamCheck] = useState({
@@ -180,7 +185,7 @@ const LoginForm = () => {
 
       <div className="text-center text-sm">
         Not a member yet?{" "}
-        <Link to="/student-register" className="text-blue-700">
+        <Link to="/student-register" className="underline">
           Register Now
         </Link>
       </div>

@@ -100,9 +100,6 @@ const StudentRegistrationForm = () => {
             aria-invalid={errors.name ? "true" : "false"}
             className="border p-2"
           />
-          {/* <span className="absolute right-2 top-2">
-            <HiOutlineUserCircle />
-          </span> */}
         </div>
         {errors.name && <p className="text-red-600 text-xs">{errors.name.message}</p>}
       </div>
@@ -121,9 +118,6 @@ const StudentRegistrationForm = () => {
             })}
             aria-invalid={errors.collegename ? "true" : "false"}
           />
-          {/* <span>
-            <HiOutlineBuildingLibrary />
-          </span> */}
         </div>
         {errors.collegename && <p className="text-red-600 text-xs">{errors.collegename.message}</p>}
       </div>
@@ -175,9 +169,6 @@ const StudentRegistrationForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          {/* <span>
-            <HiOutlineEnvelope />
-          </span> */}
         </div>
         {errors.email && <p className="text-red-600 text-xs">{errors.email.message}</p>}
       </div>
@@ -208,9 +199,6 @@ const StudentRegistrationForm = () => {
             {...register("role", { required: true })}
             aria-invalid={errors.role ? "true" : "false"}
           />
-          {/* <span>
-            <HiOutlineAcademicCap />
-          </span> */}
         </div>
         {errors.role?.type === "required" && <p className="text-red-600 text-xs">Please select Student Type</p>}
       </div>

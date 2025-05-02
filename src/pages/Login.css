@@ -107,13 +107,15 @@
     border-radius: 0;
     border-bottom: 1px solid white;
     color: white !important;
+    box-shadow: none;
 }
 
 .registration option {
     color: #4f4f4f;
 }
 
-input::placeholder {
+.registration input::placeholder,
+.login input::placeholder {
     outline: 0;
     color: white;
 }

@@ -1,11 +1,14 @@
 import { API_KEY } from '../../../config/apiConfig';
 import { useAuth } from '../../../context/AuthContext';
+import { useState } from 'react';
+import { useForm } from "react-hook-form";
 
 import FormField from '../../auth/FormField';
-import { useForm } from "react-hook-form";
 import Button from '../../../ui/Button/Button';
 import WhiteBox from '../../../ui/WhiteBox/WhiteBox';
-import { useState } from 'react';
+
+
+import toast, { Toaster } from "react-hot-toast";
 
 const ResearchSubmit = () => {
 
@@ -22,8 +25,6 @@ const ResearchSubmit = () => {
     } = useForm();
 
     const onSubmit = async (formData) => {
-
-        console.log(formData);
 
         const submitResearch = async () => {
             try {
@@ -46,8 +47,7 @@ const ResearchSubmit = () => {
                 }
 
                 const result = await response.json();
-
-                // console.log(result);
+                console.log(result);
 
                 if (result.msg === "research idea already submited") {
                     setIsResearchSubmitted(true);
@@ -55,6 +55,8 @@ const ResearchSubmit = () => {
 
                 reset();
 
+                // Show success toast notification
+                toast.success("Research submitted!");
 
             } catch (error) {
                 console.error('Get User error:', error);
@@ -73,7 +75,6 @@ const ResearchSubmit = () => {
                         <FormField
                             element="input"
                             placeholder="Enter research title..."
-                            className="mt-3"
                             {...register("researchTitle", {
                                 required: "Please enter the title",
                             })}
@@ -102,6 +103,8 @@ const ResearchSubmit = () => {
                     </div>
                 </form>
             </WhiteBox>
+
+            <Toaster />
         </>
     )
 }
