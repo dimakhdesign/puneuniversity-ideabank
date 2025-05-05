@@ -1,5 +1,5 @@
 import ExpertRegistrationForm from "./ExpertRegistrationForm";
-import LoginImage from "../../auth/Login/LoginImage";
+import LoginImage from "../Login/LoginImage";
 import "../../../pages/login.css";
 import Logo from "../../../ui/Logo/Logo";
 

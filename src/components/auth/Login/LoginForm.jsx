@@ -8,13 +8,16 @@ import { useAuth } from "../../../context/AuthContext";
 import Button from "../../../ui/Button/Button";
 
 import {
-  HiOutlineEnvelope,
   HiOutlineEye,
   HiOutlineEyeSlash,
-  HiOutlineExclamationCircle,
 } from "react-icons/hi2";
 
 import "../Form.css";
+
+const adminInfo = {
+  username: 'admin',
+  password: 'admin@123',
+}
 
 const LoginForm = () => {
   const { login } = useAuth(); // ✅ token login function
@@ -127,9 +130,6 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          {/* <span className="absolute right-2 top-2">
-            <HiOutlineEnvelope />
-          </span> */}
         </div>
         {errors.email && (
           <p className="text-red-600 text-xs">{errors.email.message}</p>
@@ -170,9 +170,6 @@ const LoginForm = () => {
             })}
             aria-invalid={errors.spamCode ? "true" : "false"}
           />
-          {/* <span className="absolute right-2 top-2 text-gray-600">
-            <HiOutlineExclamationCircle />
-          </span> */}
           <p className="mt-4 text-sm">
             What is {spamCheck.num1} + {spamCheck.num2}?
           </p>

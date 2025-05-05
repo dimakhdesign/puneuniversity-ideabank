@@ -9,7 +9,7 @@ const FormField = ({
   ...rest
 }) => {
   const baseClasses =
-    "w-full p-2 rounded-md border border-gray-300 focus:outline-none text-sm";
+    "w-full p-2 rounded-md border border-stone-300 focus:outline-none text-sm";
 
   return (
     <>

@@ -20,8 +20,8 @@ const Purple = () => {
 
         const getResearchProgress = async () => {
             try {
-                // const response = await fetch('/api/getResearchProgress.php', {
-                const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/getResearchProgress.php', {
+                const response = await fetch('/api/getResearchProgress.php', {
+                    // const response = await fetch('https://design3.dcpl.co.in/AyushCOE/APIs/getResearchProgress.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -37,6 +37,7 @@ const Purple = () => {
                 }
 
                 const result = await response.json();
+                console.log(result);
                 setStudentProgress(result.field_array.percentage)
             } catch (error) {
                 console.error('Get User error:', error);

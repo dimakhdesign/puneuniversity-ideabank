@@ -1,5 +1,5 @@
 .btn-primary {
-    border-radius: 5px;
+    border-radius: .6rem;
     background: var(--color-purple-dark);
     color: var(--color-white);
     font-size: 0.9rem;
@@ -7,5 +7,5 @@
     font-weight: 600;
     line-height: normal;
     width: 100%;
-    padding: 1rem;
+    padding: 0.8rem 1.75rem;
 }

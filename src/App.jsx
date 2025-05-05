@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
+import RedirectToDashboard from "./components/dashboard/RedirectToDashboard";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -24,7 +25,7 @@ import DocumentsRepository from "./components/dashboard/AdminDashboard/Documents
 import AdminSettings from "./components/dashboard/AdminDashboard/AdminSettings";
 
 import ExpertDashboardLayout from "./pages/ExpertDashboardLayout";
-import StudentList from "./components/dashboard/expert-dashboard/Overview";
+import StudentList from "./components/dashboard/ExpertDashboard/StudentList";
 
 import PageNotFound from "./ui/PageNotFound/PageNotFound";
 import ExpertSetting from "./components/dashboard/expert-dashboard/ExpertSetting";
@@ -36,92 +37,44 @@ function App() {
   return (
     <BrowserRouter basename="/puneuniversity-ideabank">
       <Routes>
-        {/* <Route path="/" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} /> */}
         <Route
           path="/"
           element={
             authData ? (
-              <><Navigate
-                to={authData.accessLevel === "Student"
-                  ? "/dashboard-student"
-                  : authData.accessLevel === "Expert"
-                    ? "/dashboard-expert"
-                    : authData.accessLevel === "Admin"
-                      ? "/dashboard-admin"
-                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
-                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                            '/login'} /></>
+              <RedirectToDashboard accessLevel={authData.accessLevel} />
             ) : (
               <Login />
             )
           }
         />
-        {/* <Route path="/student-register" element={authData ? <Navigate to="/dashboard-student" /> : <Register />} /> */}
+
         <Route
           path="/student-register"
           element={
             authData ? (
-              <><Navigate
-                to={authData.accessLevel === "Student"
-                  ? "/dashboard-student"
-                  : authData.accessLevel === "Expert"
-                    ? "/dashboard-expert"
-                    : authData.accessLevel === "Admin"
-                      ? "/dashboard-admin"
-                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
-                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                            '/login'} /></>
+              <RedirectToDashboard accessLevel={authData.accessLevel} />
             ) : (
               <Register />
             )
           }
         />
-
-        {/* <Route path="/expert-register" element={authData ? <Navigate to="/dashboard-expert" /> : <Register />} /> */}
 
         <Route
           path="/expert-register"
           element={
             authData ? (
-              <><Navigate
-                to={authData.accessLevel === "Student"
-                  ? "/dashboard-student"
-                  : authData.accessLevel === "Expert"
-                    ? "/dashboard-expert"
-                    : authData.accessLevel === "Admin"
-                      ? "/dashboard-admin"
-                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
-                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                            '/login'} /></>
+              <RedirectToDashboard accessLevel={authData.accessLevel} />
             ) : (
               <Register />
             )
           }
         />
 
-        {/* <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} />
-         */}
-        {/* <Route path="/login" element={authData ? <Navigate to="/dashboard-student" /> : <Login />} /> 
-        */}
-
         <Route
           path="/login"
           element={
             authData ? (
-              <><Navigate
-                to={authData.accessLevel === "Student"
-                  ? "/dashboard-student"
-                  : authData.accessLevel === "Expert"
-                    ? "/dashboard-expert"
-                    : authData.accessLevel === "Admin"
-                      ? "/dashboard-admin"
-                      : "/login"} /><Navigate to={authData.accessLevel === 'Student' ? '/dashboard-student' :
-                        authData.accessLevel === 'Expert' ? '/dashboard-expert' :
-                          authData.accessLevel === 'Admin' ? '/dashboard-admin' :
-                            '/login'} /></>
+              <RedirectToDashboard accessLevel={authData.accessLevel} />
             ) : (
               <Login />
             )
@@ -157,7 +110,9 @@ function App() {
           <Route path="notifications" element={<AdminNotifications />} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
-        <Route path="/dashboard-expert" element={<ExpertDashboardLayout />}>
+
+        {/* Protected Routes (PrivateRoute used here) */}
+        <Route path="/dashboard-expert" element={<PrivateRoute element={<ExpertDashboardLayout />} />}>
           <Route index element={<StudentList />}></Route>
           <Route path="expert-notification" element={<ExpertNotification/>}></Route>
           <Route path="expert-setting" element={<ExpertSetting/>}></Route>
